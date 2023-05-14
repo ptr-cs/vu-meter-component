@@ -1,6 +1,6 @@
 @use "sass:math";
 
-$meterWidth: 512px;
+$meterWidth: 384px;
 $meterHeight: 256px;
 $borderWidth: 8px;
 $vuRed: darkred;
@@ -72,6 +72,11 @@ border-style: solid;
         margin: 8px;
     }
     
+    .vu-meter-background-glass {
+        top: $borderWidth - $borderWidth * .5 + $borderWidth;
+        background: linear-gradient(180deg, #ffffff88 0%, transparent 3%);
+    }
+    
     .vu-meter-background-shadow-up {
         background: linear-gradient(0deg, #000000 0%, #ffc40000 15%);
         width: $meterWidth - ($borderWidth * 4) + $borderWidth;
@@ -80,6 +85,11 @@ border-style: solid;
         position: absolute;
         left: $borderWidth - $borderWidth * .5;
         margin: 8px;
+    }
+    
+    .vu-meter-background-glass-up {
+        bottom: $borderWidth * 1.25;
+        background: linear-gradient(180deg, #ffffff66 0%, transparent 10%);
     }
     
     .vu-meter-light-1, .vu-meter-light-2 {
@@ -120,44 +130,55 @@ border-style: solid;
         position: absolute;
     }
     
+    .vu-label-info {
+        bottom: $borderWidth * 8;
+        font-size: .5em;
+    }
+    
+    .vu-label-brand {
+        left: $borderWidth * 2.5;
+    }
+    
+    .vu-label-version {
+        right: $borderWidth * 2.5;
+    }
+    
     .vu-value-minor {
-        font-size: 1em;
-        margin-left: 0px;
-        margin-top: 26px;
+        font-size: .8em;
     }
     
     .vu-value-minor-0 {
-        top: 114px;
-        left: $borderWidth * 9;
+        top: 120px;
+        left: $borderWidth * 13;
     }
     
     .vu-value-minor-20 {
         top: 104px;
-        left: $borderWidth * 12.25;
+        left: $borderWidth * 15;
     }
     
     .vu-value-minor-40 {
-        top: 92px;
-        left: $borderWidth * 19;
+        top: 86px;
+        left: $borderWidth * 18;
     }
     
     .vu-value-minor-60 {
-        top: 84px;
-        left: $borderWidth * 26;
+        top: 78px;
+        left: $borderWidth * 21;
     }
     
     .vu-value-minor-80 {
-        top: 84px;
-        left: $borderWidth * 33;
+        top: 74px;
+        left: $borderWidth * 24.5;
     }
     
     .vu-value-minor-100 {
-        top: 90px;
-        left: $borderWidth * 40;
+        top: 80px;
+        left: $borderWidth * 27;
     }
     
     .vu-label-min, .vu-label-max {
-        margin-top: $borderWidth * 2;
+        margin-top: $borderWidth * 3;
     }
     
     .vu-label-min {
@@ -170,78 +191,114 @@ border-style: solid;
     }
     
     .vu-value-major-n20 {
-        left: $borderWidth * 4;
-        top: 32px;
+        left: $borderWidth * 3;
+        top: 68px;
     }
     
     .vu-value-major-n10 {
-        left: $borderWidth * 12;
-        top: 16px;
+        left: $borderWidth * 7;
+        top: 36px;
     }
     
     .vu-value-major-n7 {
-        left: $borderWidth * 19;
-        top: 8px;
+        left: $borderWidth * 11;
+        top: 16px;
     }
     
     .vu-value-major-n5 {
-        left: $borderWidth * 24;
+        left: $borderWidth * 15;
         top: 2px;
     }
     
     .vu-value-major-n3 {
-        left: $borderWidth * 29.5;
-        top: 0px;
+        left: $borderWidth * 19.5;
+        top: -6px;
     }
     
     .vu-value-major-n1 {
-        left: $borderWidth * 35;
-        top: 2px;
+        left: $borderWidth * 24.5;
+        top: -6px;
     }
     
     .vu-value-major-0 {
-        left: $borderWidth * 41.5;
-        top: 6px;
+        left: $borderWidth * 30;
+        top: 0px;
     }
     
     .vu-value-major-1 {
-        left: $borderWidth * 46;
-        top: 12px;
+        left: $borderWidth * 33;
+        top: 16px;
         color: $vuRed;
     }
     
     .vu-value-major-2 {
-        left: $borderWidth * 51.5;
-        top: 22px;
+        left: $borderWidth * 36;
+        top: 40px;
         color: $vuRed;
     }
     
     .vu-value-major-3 {
-        left: $borderWidth * 56;
-        top: 32px;
+        left: $borderWidth * 39;
+        top: 68px;
         color: $vuRed;
     }
+    
+
     
     .vu-meter-needle {
         position: absolute;
         width: 3px;
-        height: 156px;
-        background: black;
-        transform: rotate(0deg) translate(0px,0px);
-        transform: rotate(-20deg) translate(-156px,0px);
-        left: $meterWidth * .5;
-        bottom: $borderWidth * 9;
-        z-index: 5;
+        height: 144px;
+        transform: rotate(-60deg);
+        background: #333;
+        left: $meterWidth * .5 - 3px;
+        bottom: $borderWidth * 7;
+        z-index: 3;
         transform-origin: bottom center;
     }
     
-    svg {
-        
-        stroke: black;
-        left: 24px;
-        margin-top: -160px;
+    .vu-meter-curve {
+        transform: scale(1.0038);
+    }
+    
+    .vu-meter-guide {
         fill: transparent;
         position: absolute;
+        top: -($meterHeight / 2) - 16px;
+        left: 0;
+        z-index: 2;
+        stroke: black;
+        fill: #444;
+    }
+    
+    .vu-meter-guide-over {
+        fill: $vuRed;
+        stroke: $vuRed;
+    }
+    
+    .vu-meter-screw {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        background: radial-gradient(#222 33%, #111);
+        border: 2px solid black;
+        border-radius: 16px;
+        bottom: $borderWidth * 4;
+        left: $meterWidth / 2 - 16;
+        z-index: 7;
+        
+    }
+    
+    .vu-meter-screw-notch {
+        width: 4px;
+        height: 34px;
+        position: absolute;
+        background: linear-gradient(black, #111, black);
+        transform: rotate(45deg);
+        border-radius: 0px;
+        bottom: $borderWidth * 4;
+        left: $meterWidth / 2 - 16 + 16;
+        z-index: 7;
     }
 }
 
