@@ -24,10 +24,16 @@ $vuRed: darkred;
     font-weight: normal;
     font-style: normal;
     
-    .vu-meter-border1, .vu-meter-border2 {
+    .vu-meter-border1, .vu-meter-border2, .vu-meter-border3 {
         position: absolute;
         width: $meterWidth - ($borderWidth * 2);
         height: $meterHeight - ($borderWidth * 2);
+    }
+    
+    .vu-meter-border3 {
+        width: $meterWidth;
+        height: $meterHeight;
+        opacity: .2;
     }
     
     .vu-meter-border1 {
@@ -62,34 +68,71 @@ border-style: solid;
         margin: 8px;
     }
     
-    .vu-meter-background-shadow {
-        background: linear-gradient(180deg, #000000 0%, #ffc40000 5%);
-        width: $meterWidth - ($borderWidth * 4) + $borderWidth;
-        height: $meterHeight - ($borderWidth * 4)  + $borderWidth;
-        position: absolute;
-        left: $borderWidth - $borderWidth * .5;
-        top: $borderWidth - $borderWidth * .5;
+    .vu-meter-background-shadow, .vu-meter-background-shadow-up {
         margin: 8px;
+        position: absolute;
+        width: $meterWidth - ($borderWidth * 4) + $borderWidth;
+        left: $borderWidth - $borderWidth * .5;
     }
     
-    .vu-meter-background-glass {
-        top: $borderWidth - $borderWidth * .5 + $borderWidth;
-        background: linear-gradient(180deg, #ffffff88 0%, transparent 3%);
+    .vu-meter-background-shadow {
+        background: linear-gradient(180deg, #000000 0%, #ffc40000 5%);
+        height: $meterHeight - ($borderWidth * 4)  + $borderWidth;
+        top: $borderWidth - $borderWidth * .5;
     }
     
     .vu-meter-background-shadow-up {
         background: linear-gradient(0deg, #000000 0%, #ffc40000 15%);
-        width: $meterWidth - ($borderWidth * 4) + $borderWidth;
         height: 64px;
-        bottom: 64px;
-        position: absolute;
-        left: $borderWidth - $borderWidth * .5;
+        bottom: 68px;
+    }
+    
+    .vu-meter-background-glass-down, .vu-meter-background-glass-up, 
+    .vu-meter-background-glass-left, .vu-meter-background-glass-right {
         margin: 8px;
+        position: absolute;
+        width: $meterWidth - ($borderWidth * 4) + $borderWidth;
+        height: $meterHeight - ($borderWidth * 4)  + $borderWidth;
+        left: $borderWidth - $borderWidth * .5;
+    }
+    
+    .vu-meter-background-glass-down, .vu-meter-background-glass-up, 
+    .vu-meter-background-glass-left, .vu-meter-background-glass-right,
+    .vu-meter-background-glass-border {
+        z-index: 7;   
+    }
+    
+    .vu-meter-background-glass-down {
+        top: $borderWidth - $borderWidth * .5 + $borderWidth;
+        background: linear-gradient(180deg, #00000088 0%, transparent 3%);
     }
     
     .vu-meter-background-glass-up {
-        bottom: $borderWidth * 1.25;
-        background: linear-gradient(180deg, #ffffff66 0%, transparent 10%);
+        bottom: $borderWidth * 9;
+        background: linear-gradient(0deg, #00000066 0%, transparent 3%);
+    }
+    
+    .vu-meter-background-glass-left {
+        height: $meterHeight - ($borderWidth * 4)  - $borderWidth * 8.5;
+        bottom: $borderWidth * 9;
+        left: $borderWidth * .5;
+        background: linear-gradient(90deg, #00000088 0%, transparent 2%);
+    }
+    
+    .vu-meter-background-glass-right {
+        height: $meterHeight - ($borderWidth * 4)  - $borderWidth * 8.5;
+        bottom: $borderWidth * 9;
+        right: 0;
+        background: linear-gradient(270deg, #00000088 0%, transparent 2%);
+    }
+    
+    .vu-meter-background-glass-border {
+        border: 1px solid #00000055;
+        position: absolute;
+        left: $borderWidth * 2.15;
+        top: $borderWidth * 3;
+        width: $meterWidth - $borderWidth * 4.5;
+        height: $meterHeight - $borderWidth * 13.75;
     }
     
     .vu-meter-light-1, .vu-meter-light-2 {
@@ -112,7 +155,7 @@ border-style: solid;
         right: $borderWidth * 4;
     }
     
-    .vu-meter-bar {
+    .vu-meter-bar, .vu-meter-bar-texture, .vu-meter-bar-shadow {
         position: absolute;
         z-index: 6;
         width: $meterWidth - ($borderWidth * 2) - $borderWidth;
@@ -120,6 +163,15 @@ border-style: solid;
         background: radial-gradient(#222, #111);
         left: $borderWidth + $borderWidth * .5;
         bottom: $borderWidth + $borderWidth * .5;
+    }
+    
+    .vu-meter-bar-texture {
+        opacity: .25;
+    }
+    
+    .vu-meter-bar-shadow {
+        height: 48px;
+        background: linear-gradient(0deg, #000000aa, transparent);
     }
     
     .vu-label, .vu-value, .vu-value-minor {
@@ -131,16 +183,16 @@ border-style: solid;
     }
     
     .vu-label-info {
-        bottom: $borderWidth * 8;
+        bottom: $borderWidth * 8.5;
         font-size: .5em;
     }
     
     .vu-label-brand {
-        left: $borderWidth * 2.5;
+        left: $borderWidth * 3;
     }
     
     .vu-label-version {
-        right: $borderWidth * 2.5;
+        right: $borderWidth * 3;
     }
     
     .vu-value-minor {
@@ -243,18 +295,17 @@ border-style: solid;
         color: $vuRed;
     }
     
-
-    
     .vu-meter-needle {
         position: absolute;
         width: 3px;
-        height: 144px;
+        height: 143px;
         transform: rotate(-60deg);
         background: #333;
         left: $meterWidth * .5 - 3px;
         bottom: $borderWidth * 7;
         z-index: 3;
         transform-origin: bottom center;
+        box-shadow: 5px 5px 5px #00000088;
     }
     
     .vu-meter-curve {
@@ -264,7 +315,7 @@ border-style: solid;
     .vu-meter-guide {
         fill: transparent;
         position: absolute;
-        top: -($meterHeight / 2) - 16px;
+        top: -($meterHeight * .5) - 16px;
         left: 0;
         z-index: 2;
         stroke: black;
@@ -282,23 +333,48 @@ border-style: solid;
         position: absolute;
         background: radial-gradient(#222 33%, #111);
         border: 2px solid black;
-        border-radius: 16px;
+        border-radius: 32px;
         bottom: $borderWidth * 4;
-        left: $meterWidth / 2 - 16;
+        left: $meterWidth * .5 - 16;
         z-index: 7;
-        
+    }
+    
+    .vu-meter-screw-spectral {
+        background: radial-gradient(farthest-corner at 8px 0px, #ffffff88, transparent 50%);
     }
     
     .vu-meter-screw-notch {
-        width: 4px;
+        width: 5px;
         height: 34px;
         position: absolute;
         background: linear-gradient(black, #111, black);
         transform: rotate(45deg);
         border-radius: 0px;
         bottom: $borderWidth * 4;
-        left: $meterWidth / 2 - 16 + 16;
+        left: $meterWidth * .5 - 16 + 16;
         z-index: 7;
     }
 }
 
+.audio-controls-wrapper {
+    margin: 8px;
+    margin-left: 16px;
+    display: flex;
+    flex-direction: row;
+    z-index: 10;
+    
+    .initAudio {
+        background: darkgreen;
+    }
+    
+    .mute {
+        background: darkred;
+    }
+    
+    button {
+        display: inline-block;
+        margin: 8px;
+        z-index: 10;
+        font-size: .8em;
+    }
+}

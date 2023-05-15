@@ -16,10 +16,15 @@
   font-weight: normal;
   font-style: normal;
 }
-.vu-meter .vu-meter-border1, .vu-meter .vu-meter-border2 {
+.vu-meter .vu-meter-border1, .vu-meter .vu-meter-border2, .vu-meter .vu-meter-border3 {
   position: absolute;
   width: 368px;
   height: 240px;
+}
+.vu-meter .vu-meter-border3 {
+  width: 384px;
+  height: 256px;
+  opacity: 0.2;
 }
 .vu-meter .vu-meter-border1 {
   border: 8px solid #000;
@@ -49,31 +54,62 @@
   top: 4px;
   margin: 8px;
 }
+.vu-meter .vu-meter-background-shadow, .vu-meter .vu-meter-background-shadow-up {
+  margin: 8px;
+  position: absolute;
+  width: 360px;
+  left: 4px;
+}
 .vu-meter .vu-meter-background-shadow {
   background: linear-gradient(180deg, #000000 0%, rgba(255, 196, 0, 0) 5%);
-  width: 360px;
   height: 232px;
-  position: absolute;
-  left: 4px;
   top: 4px;
-  margin: 8px;
-}
-.vu-meter .vu-meter-background-glass {
-  top: 12px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5333333333) 0%, transparent 3%);
 }
 .vu-meter .vu-meter-background-shadow-up {
   background: linear-gradient(0deg, #000000 0%, rgba(255, 196, 0, 0) 15%);
-  width: 360px;
   height: 64px;
-  bottom: 64px;
-  position: absolute;
-  left: 4px;
+  bottom: 68px;
+}
+.vu-meter .vu-meter-background-glass-down, .vu-meter .vu-meter-background-glass-up,
+.vu-meter .vu-meter-background-glass-left, .vu-meter .vu-meter-background-glass-right {
   margin: 8px;
+  position: absolute;
+  width: 360px;
+  height: 232px;
+  left: 4px;
+}
+.vu-meter .vu-meter-background-glass-down, .vu-meter .vu-meter-background-glass-up,
+.vu-meter .vu-meter-background-glass-left, .vu-meter .vu-meter-background-glass-right,
+.vu-meter .vu-meter-background-glass-border {
+  z-index: 7;
+}
+.vu-meter .vu-meter-background-glass-down {
+  top: 12px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5333333333) 0%, transparent 3%);
 }
 .vu-meter .vu-meter-background-glass-up {
-  bottom: 10px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 10%);
+  bottom: 72px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, transparent 3%);
+}
+.vu-meter .vu-meter-background-glass-left {
+  height: 156px;
+  bottom: 72px;
+  left: 4px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5333333333) 0%, transparent 2%);
+}
+.vu-meter .vu-meter-background-glass-right {
+  height: 156px;
+  bottom: 72px;
+  right: 0;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.5333333333) 0%, transparent 2%);
+}
+.vu-meter .vu-meter-background-glass-border {
+  border: 1px solid rgba(0, 0, 0, 0.3333333333);
+  position: absolute;
+  left: 17.2px;
+  top: 24px;
+  width: 348px;
+  height: 146px;
 }
 .vu-meter .vu-meter-light-1, .vu-meter .vu-meter-light-2 {
   position: absolute;
@@ -92,7 +128,7 @@
 .vu-meter .vu-meter-light-2 {
   right: 32px;
 }
-.vu-meter .vu-meter-bar {
+.vu-meter .vu-meter-bar, .vu-meter .vu-meter-bar-texture, .vu-meter .vu-meter-bar-shadow {
   position: absolute;
   z-index: 6;
   width: 360px;
@@ -100,6 +136,13 @@
   background: radial-gradient(#222, #111);
   left: 12px;
   bottom: 12px;
+}
+.vu-meter .vu-meter-bar-texture {
+  opacity: 0.25;
+}
+.vu-meter .vu-meter-bar-shadow {
+  height: 48px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6666666667), transparent);
 }
 .vu-meter .vu-label, .vu-meter .vu-value, .vu-meter .vu-value-minor {
   z-index: 2;
@@ -109,14 +152,14 @@
   position: absolute;
 }
 .vu-meter .vu-label-info {
-  bottom: 64px;
+  bottom: 68px;
   font-size: 0.5em;
 }
 .vu-meter .vu-label-brand {
-  left: 20px;
+  left: 24px;
 }
 .vu-meter .vu-label-version {
-  right: 20px;
+  right: 24px;
 }
 .vu-meter .vu-value-minor {
   font-size: 0.8em;
@@ -201,13 +244,14 @@
 .vu-meter .vu-meter-needle {
   position: absolute;
   width: 3px;
-  height: 144px;
+  height: 143px;
   transform: rotate(-60deg);
   background: #333;
   left: 189px;
   bottom: 56px;
   z-index: 3;
   transform-origin: bottom center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5333333333);
 }
 .vu-meter .vu-meter-curve {
   transform: scale(1.0038);
@@ -231,13 +275,16 @@
   position: absolute;
   background: radial-gradient(#222 33%, #111);
   border: 2px solid black;
-  border-radius: 16px;
+  border-radius: 32px;
   bottom: 32px;
   left: 176px;
   z-index: 7;
 }
+.vu-meter .vu-meter-screw-spectral {
+  background: radial-gradient(farthest-corner at 8px 0px, rgba(255, 255, 255, 0.5333333333), transparent 50%);
+}
 .vu-meter .vu-meter-screw-notch {
-  width: 4px;
+  width: 5px;
   height: 34px;
   position: absolute;
   background: linear-gradient(black, #111, black);
@@ -246,4 +293,24 @@
   bottom: 32px;
   left: 192px;
   z-index: 7;
+}
+
+.audio-controls-wrapper {
+  margin: 8px;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: row;
+  z-index: 10;
+}
+.audio-controls-wrapper .initAudio {
+  background: darkgreen;
+}
+.audio-controls-wrapper .mute {
+  background: darkred;
+}
+.audio-controls-wrapper button {
+  display: inline-block;
+  margin: 8px;
+  z-index: 10;
+  font-size: 0.8em;
 }/*# sourceMappingURL=App.css.map */
