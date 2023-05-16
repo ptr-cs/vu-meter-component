@@ -1,0 +1,380 @@
+﻿@font-face {
+  font-family: "Squada One";
+  src: url("assets/Squada_One/SquadaOne-Regular.ttf") format("truetype");
+}
+body {
+  background: #444;
+}
+
+.vu-meter {
+  background: linear-gradient(to top, #666, #777);
+  width: 384px;
+  height: 256px;
+  border: 2px solid #000;
+  background: radial-gradient(#888, #333);
+  margin: 0px;
+  border-radius: 3px;
+  font-size: 1.3em;
+  position: relative;
+  font-family: Squada One;
+  font-weight: normal;
+  font-style: normal;
+}
+.vu-meter .vu-meter-border {
+  position: absolute;
+  width: 368px;
+  height: 240px;
+}
+.vu-meter .vu-meter-border1 {
+  border: 8px solid #000;
+}
+.vu-meter .vu-meter-border2 {
+  border-top: 8px solid;
+  border-width: 8px;
+  border-image: linear-gradient(#ccc, rgba(102, 102, 102, 0.5333333333)) 90;
+  border-style: solid;
+}
+.vu-meter .vu-meter-border3 {
+  width: 384px;
+  height: 256px;
+  opacity: 0.5;
+}
+.vu-meter .vu-meter-border4 {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
+  height: 256px;
+}
+.vu-meter .vu-meter-border5 {
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
+  height: 256px;
+  right: 0;
+}
+.vu-meter .vu-meter-border6 {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
+  width: 384px;
+}
+.vu-meter .vu-meter-border7 {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
+  width: 384px;
+  bottom: 0;
+}
+.vu-meter .vu-meter-border8 {
+  background: linear-gradient(270deg, transparent, rgba(0, 0, 0, 0.7333333333));
+  width: 4px;
+  left: 8px;
+  top: 8px;
+  bottom: 0;
+}
+.vu-meter .vu-meter-border9 {
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.7333333333));
+  width: 4px;
+  right: 8px;
+  top: 8px;
+  bottom: 0;
+}
+.vu-meter .vu-meter-border10 {
+  background: linear-gradient(0deg, transparent, rgba(0, 0, 0, 0.7333333333));
+  height: 4px;
+  left: 8px;
+  top: 8px;
+}
+.vu-meter .vu-meter-border11 {
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7333333333));
+  height: 4px;
+  left: 8px;
+  bottom: 8px;
+}
+.vu-meter .vu-meter-border12 {
+  border: 1px solid black;
+  left: 12px;
+  top: 12px;
+  height: 230px;
+  width: 358px;
+  z-index: 7;
+}
+.vu-meter .vu-meter-background {
+  background: radial-gradient(gold, goldenrod);
+  width: 360px;
+  height: 232px;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  margin: 8px;
+}
+.vu-meter .vu-meter-background-overlay {
+  background: linear-gradient(-45deg, rgba(255, 140, 0, 0.2666666667), rgba(255, 196, 0, 0.5333333333));
+  width: 360px;
+  height: 232px;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  margin: 8px;
+}
+.vu-meter .vu-meter-background-shadow, .vu-meter .vu-meter-background-shadow-up {
+  margin: 8px;
+  position: absolute;
+  width: 360px;
+  left: 4px;
+}
+.vu-meter .vu-meter-background-shadow {
+  background: linear-gradient(180deg, #000000 0%, rgba(255, 196, 0, 0) 5%);
+  height: 232px;
+  top: 4px;
+}
+.vu-meter .vu-meter-background-shadow-up {
+  background: linear-gradient(0deg, #000000 0%, rgba(255, 196, 0, 0) 15%);
+  height: 64px;
+  bottom: 68px;
+}
+.vu-meter .vu-meter-background-glass-down, .vu-meter .vu-meter-background-glass-up,
+.vu-meter .vu-meter-background-glass-left, .vu-meter .vu-meter-background-glass-right {
+  margin: 8px;
+  position: absolute;
+  width: 360px;
+  height: 232px;
+  left: 4px;
+}
+.vu-meter .vu-meter-background-glass-down, .vu-meter .vu-meter-background-glass-up,
+.vu-meter .vu-meter-background-glass-left, .vu-meter .vu-meter-background-glass-right,
+.vu-meter .vu-meter-background-glass-border {
+  z-index: 7;
+}
+.vu-meter .vu-meter-background-glass-down {
+  top: 12px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5333333333) 0%, transparent 3%);
+}
+.vu-meter .vu-meter-background-glass-up {
+  bottom: 72px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, transparent 3%);
+}
+.vu-meter .vu-meter-background-glass-left {
+  height: 156px;
+  bottom: 72px;
+  left: 4px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5333333333) 0%, transparent 2%);
+}
+.vu-meter .vu-meter-background-glass-right {
+  height: 156px;
+  bottom: 72px;
+  right: 0;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.5333333333) 0%, transparent 2%);
+}
+.vu-meter .vu-meter-background-glass-border {
+  border: 1px solid rgba(0, 0, 0, 0.3333333333);
+  position: absolute;
+  left: 17.2px;
+  top: 24px;
+  width: 348px;
+  height: 146px;
+}
+.vu-meter .vu-meter-light-1, .vu-meter .vu-meter-light-2 {
+  position: absolute;
+  height: 128px;
+  width: 128px;
+  border-radius: 64px;
+  background: radial-gradient(circle at center, white 0, rgba(255, 255, 255, 0) 100%);
+  filter: blur(16px);
+  bottom: 32px;
+  z-index: 3;
+  opacity: 0.9;
+}
+.vu-meter .vu-meter-light-1 {
+  left: 32px;
+}
+.vu-meter .vu-meter-light-2 {
+  right: 32px;
+}
+.vu-meter .vu-meter-bar, .vu-meter .vu-meter-bar-texture, .vu-meter .vu-meter-bar-shadow {
+  position: absolute;
+  z-index: 6;
+  width: 360px;
+  height: 64px;
+  background: radial-gradient(#222, #111);
+  left: 12px;
+  bottom: 12px;
+}
+.vu-meter .vu-meter-bar-texture {
+  opacity: 0.25;
+}
+.vu-meter .vu-meter-bar-shadow {
+  height: 48px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6666666667), transparent);
+}
+.vu-meter .vu-label, .vu-meter .vu-value, .vu-meter .vu-value-minor {
+  z-index: 2;
+  color: black;
+  margin-top: 30px;
+  font-size: 1.3em;
+  position: absolute;
+}
+.vu-meter .vu-label-info {
+  bottom: 68px;
+  font-size: 0.5em;
+}
+.vu-meter .vu-label-brand {
+  left: 24px;
+}
+.vu-meter .vu-label-version {
+  right: 24px;
+}
+.vu-meter .vu-value-minor {
+  font-size: 0.8em;
+}
+.vu-meter .vu-value-minor-0 {
+  top: 120px;
+  left: 104px;
+}
+.vu-meter .vu-value-minor-20 {
+  top: 104px;
+  left: 120px;
+}
+.vu-meter .vu-value-minor-40 {
+  top: 86px;
+  left: 144px;
+}
+.vu-meter .vu-value-minor-60 {
+  top: 78px;
+  left: 168px;
+}
+.vu-meter .vu-value-minor-80 {
+  top: 74px;
+  left: 196px;
+}
+.vu-meter .vu-value-minor-100 {
+  top: 80px;
+  left: 216px;
+}
+.vu-meter .vu-label-min, .vu-meter .vu-label-max {
+  margin-top: 24px;
+}
+.vu-meter .vu-label-min {
+  left: 32px;
+}
+.vu-meter .vu-label-max {
+  color: darkred;
+  right: 32px;
+}
+.vu-meter .vu-value-major-n20 {
+  left: 24px;
+  top: 68px;
+}
+.vu-meter .vu-value-major-n10 {
+  left: 56px;
+  top: 36px;
+}
+.vu-meter .vu-value-major-n7 {
+  left: 88px;
+  top: 16px;
+}
+.vu-meter .vu-value-major-n5 {
+  left: 120px;
+  top: 2px;
+}
+.vu-meter .vu-value-major-n3 {
+  left: 156px;
+  top: -6px;
+}
+.vu-meter .vu-value-major-n1 {
+  left: 196px;
+  top: -6px;
+}
+.vu-meter .vu-value-major-0 {
+  left: 240px;
+  top: 0px;
+}
+.vu-meter .vu-value-major-1 {
+  left: 264px;
+  top: 16px;
+  color: darkred;
+}
+.vu-meter .vu-value-major-2 {
+  left: 288px;
+  top: 40px;
+  color: darkred;
+}
+.vu-meter .vu-value-major-3 {
+  left: 312px;
+  top: 68px;
+  color: darkred;
+}
+.vu-meter .vu-meter-needle {
+  position: absolute;
+  width: 3px;
+  height: 143px;
+  transform: rotate(-60deg);
+  background: #333;
+  left: 189px;
+  bottom: 56px;
+  z-index: 3;
+  transform-origin: bottom center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5333333333);
+}
+.vu-meter .vu-meter-curve {
+  transform: scale(1.0038);
+}
+.vu-meter .vu-meter-guide {
+  fill: transparent;
+  position: absolute;
+  top: -144px;
+  left: 0;
+  z-index: 2;
+  stroke: black;
+  fill: #444;
+}
+.vu-meter .vu-meter-guide-over {
+  fill: darkred;
+  stroke: darkred;
+}
+.vu-meter .vu-meter-screw {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  background: radial-gradient(#222 33%, #111);
+  border: 2px solid black;
+  border-radius: 32px;
+  bottom: 32px;
+  left: 176px;
+  z-index: 7;
+}
+.vu-meter .vu-meter-screw-spectral {
+  background: radial-gradient(farthest-corner at 8px 0px, rgba(255, 255, 255, 0.5333333333), transparent 50%);
+}
+.vu-meter .vu-meter-screw-notch {
+  width: 5px;
+  height: 34px;
+  position: absolute;
+  background: linear-gradient(black, #111, black);
+  transform: rotate(45deg);
+  border-radius: 0px;
+  bottom: 32px;
+  left: 192px;
+  z-index: 7;
+}
+
+.audio-controls-wrapper {
+  margin: 8px;
+  margin-left: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 10;
+}
+.audio-controls-wrapper .initAudio {
+  background: darkgreen;
+  color: white;
+}
+.audio-controls-wrapper .mute {
+  background: darkred;
+}
+.audio-controls-wrapper button, .audio-controls-wrapper a {
+  font-family: "Squada One";
+  display: inline-block;
+  margin: 8px;
+  z-index: 10;
+  font-size: 0.8em;
+  color: white;
+}
+.audio-controls-wrapper a {
+  background: black;
+  padding: 4px 8px;
+  vertical-align: middle;
+}

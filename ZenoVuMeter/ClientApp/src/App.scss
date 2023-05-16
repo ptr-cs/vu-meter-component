@@ -1,0 +1,455 @@
+@use "sass:math";
+
+$meterWidth: 384px;
+$meterHeight: 256px;
+$borderWidth: 8px;
+$vuRed: darkred;
+
+@font-face { 
+    font-family: 'Squada One';
+    src: url('./assets/Squada_One/SquadaOne-Regular.ttf') format('truetype');
+}
+
+body {
+    background: #444;
+}
+
+.vu-meter {
+    background: linear-gradient(to top, #666, #777);
+    width: $meterWidth;
+    height: $meterHeight;
+    border: 2px solid #000;
+    background: radial-gradient(#888, #333);
+    margin: 0px;
+    border-radius: 3px;
+    font-size: 1.3em;
+    position: relative;
+    font-family: Squada One;
+    font-weight: normal;
+    font-style: normal;
+    
+    .vu-meter-border {
+        position: absolute;
+        width: $meterWidth - ($borderWidth * 2);
+        height: $meterHeight - ($borderWidth * 2);
+    }
+    
+    .vu-meter-border1 {
+        border: $borderWidth solid #000;
+
+    }
+    
+    .vu-meter-border2 {
+        border-top: $borderWidth solid;
+        border-width: $borderWidth;
+        border-image: linear-gradient(#ccc, #66666688) 90;
+border-style: solid;
+    }
+    
+    .vu-meter-border3 {
+        width: $meterWidth;
+        height: $meterHeight;
+        opacity: .5;
+    }
+    
+    .vu-meter-border4 {
+        background: linear-gradient(90deg, #000000bb, transparent 2%);
+        height: $meterHeight;
+    }
+    
+    .vu-meter-border5 {
+        background: linear-gradient(270deg, #000000bb, transparent 2%);
+        height: $meterHeight;
+        right: 0;
+    }
+    
+    .vu-meter-border6 {
+        background: linear-gradient(180deg, #000000bb, transparent 2%);
+        width: $meterWidth;
+    }
+    
+    .vu-meter-border7 {
+        background: linear-gradient(0deg, #000000bb, transparent 2%);
+        width: $meterWidth;
+        bottom: 0;
+    }
+    
+    .vu-meter-border8 {
+        background: linear-gradient(270deg, transparent, #000000bb );
+        width: $borderWidth * .5;
+        left: $borderWidth;
+        top: $borderWidth;
+        bottom: 0;
+    }
+    
+    .vu-meter-border9 {
+        background: linear-gradient(90deg, transparent, #000000bb );
+        width: $borderWidth * .5;
+        right: $borderWidth;
+        top: $borderWidth;
+        bottom: 0;
+    }
+    
+    .vu-meter-border10 {
+        background: linear-gradient(0deg, transparent, #000000bb );
+        height: $borderWidth * .5;
+        left: $borderWidth;
+        top: $borderWidth;
+    }
+    
+    .vu-meter-border11 {
+        background: linear-gradient(180deg, transparent, #000000bb );
+        height: $borderWidth * .5;
+        left: $borderWidth;
+        bottom: $borderWidth;
+    }
+    
+    .vu-meter-border12 {
+        border: 1px solid black;
+        left: $borderWidth + $borderWidth / 2;
+        top: $borderWidth + $borderWidth / 2;
+        height: $meterHeight - $borderWidth * 3 - 2;
+        width: $meterWidth - $borderWidth * 3 - 2;
+        z-index: 7;
+    }
+    
+    .vu-meter-background {
+        background: radial-gradient(gold, goldenrod);
+        width: $meterWidth - ($borderWidth * 4) + $borderWidth;
+        height: $meterHeight - ($borderWidth * 4)  + $borderWidth;
+        position: absolute;
+        left: $borderWidth - $borderWidth * .5;
+        top: $borderWidth - $borderWidth * .5;
+        margin: 8px;
+    }
+    
+    .vu-meter-background-overlay {
+        background: linear-gradient(-45deg, #ff8c0044, #ffc40088);
+        width: $meterWidth - ($borderWidth * 4) + $borderWidth;
+        height: $meterHeight - ($borderWidth * 4)  + $borderWidth;
+        position: absolute;
+        left: $borderWidth - $borderWidth * .5;
+        top: $borderWidth - $borderWidth * .5;
+        margin: 8px;
+    }
+    
+    .vu-meter-background-shadow, .vu-meter-background-shadow-up {
+        margin: 8px;
+        position: absolute;
+        width: $meterWidth - ($borderWidth * 4) + $borderWidth;
+        left: $borderWidth - $borderWidth * .5;
+    }
+    
+    .vu-meter-background-shadow {
+        background: linear-gradient(180deg, #000000 0%, #ffc40000 5%);
+        height: $meterHeight - ($borderWidth * 4)  + $borderWidth;
+        top: $borderWidth - $borderWidth * .5;
+    }
+    
+    .vu-meter-background-shadow-up {
+        background: linear-gradient(0deg, #000000 0%, #ffc40000 15%);
+        height: 64px;
+        bottom: 68px;
+    }
+    
+    .vu-meter-background-glass-down, .vu-meter-background-glass-up, 
+    .vu-meter-background-glass-left, .vu-meter-background-glass-right {
+        margin: 8px;
+        position: absolute;
+        width: $meterWidth - ($borderWidth * 4) + $borderWidth;
+        height: $meterHeight - ($borderWidth * 4)  + $borderWidth;
+        left: $borderWidth - $borderWidth * .5;
+    }
+    
+    .vu-meter-background-glass-down, .vu-meter-background-glass-up, 
+    .vu-meter-background-glass-left, .vu-meter-background-glass-right,
+    .vu-meter-background-glass-border {
+        z-index: 7;   
+    }
+    
+    .vu-meter-background-glass-down {
+        top: $borderWidth - $borderWidth * .5 + $borderWidth;
+        background: linear-gradient(180deg, #00000088 0%, transparent 3%);
+    }
+    
+    .vu-meter-background-glass-up {
+        bottom: $borderWidth * 9;
+        background: linear-gradient(0deg, #00000066 0%, transparent 3%);
+    }
+    
+    .vu-meter-background-glass-left {
+        height: $meterHeight - ($borderWidth * 4)  - $borderWidth * 8.5;
+        bottom: $borderWidth * 9;
+        left: $borderWidth * .5;
+        background: linear-gradient(90deg, #00000088 0%, transparent 2%);
+    }
+    
+    .vu-meter-background-glass-right {
+        height: $meterHeight - ($borderWidth * 4)  - $borderWidth * 8.5;
+        bottom: $borderWidth * 9;
+        right: 0;
+        background: linear-gradient(270deg, #00000088 0%, transparent 2%);
+    }
+    
+    .vu-meter-background-glass-border {
+        border: 1px solid #00000055;
+        position: absolute;
+        left: $borderWidth * 2.15;
+        top: $borderWidth * 3;
+        width: $meterWidth - $borderWidth * 4.5;
+        height: $meterHeight - $borderWidth * 13.75;
+    }
+    
+    .vu-meter-light-1, .vu-meter-light-2 {
+        position: absolute;
+        height: 128px;
+        width: 128px;
+        border-radius: 64px;
+        background: radial-gradient(circle at center, white 0, #ffffff00 100%);
+        filter: blur(16px);
+        bottom: $borderWidth * 4;
+        z-index: 3;
+        opacity: .9;
+    }
+    
+    .vu-meter-light-1 {
+        left: $borderWidth * 4;
+    }
+    
+    .vu-meter-light-2 {
+        right: $borderWidth * 4;
+    }
+    
+    .vu-meter-bar, .vu-meter-bar-texture, .vu-meter-bar-shadow {
+        position: absolute;
+        z-index: 6;
+        width: $meterWidth - ($borderWidth * 2) - $borderWidth;
+        height: 64px;
+        background: radial-gradient(#222, #111);
+        left: $borderWidth + $borderWidth * .5;
+        bottom: $borderWidth + $borderWidth * .5;
+    }
+    
+    .vu-meter-bar-texture {
+        opacity: .25;
+    }
+    
+    .vu-meter-bar-shadow {
+        height: 48px;
+        background: linear-gradient(0deg, #000000aa, transparent);
+    }
+    
+    .vu-label, .vu-value, .vu-value-minor {
+        z-index: 2;
+        color: black;
+        margin-top: 30px;
+        font-size: 1.3em;
+        position: absolute;
+    }
+    
+    .vu-label-info {
+        bottom: $borderWidth * 8.5;
+        font-size: .5em;
+    }
+    
+    .vu-label-brand {
+        left: $borderWidth * 3;
+    }
+    
+    .vu-label-version {
+        right: $borderWidth * 3;
+    }
+    
+    .vu-value-minor {
+        font-size: .8em;
+    }
+    
+    .vu-value-minor-0 {
+        top: 120px;
+        left: $borderWidth * 13;
+    }
+    
+    .vu-value-minor-20 {
+        top: 104px;
+        left: $borderWidth * 15;
+    }
+    
+    .vu-value-minor-40 {
+        top: 86px;
+        left: $borderWidth * 18;
+    }
+    
+    .vu-value-minor-60 {
+        top: 78px;
+        left: $borderWidth * 21;
+    }
+    
+    .vu-value-minor-80 {
+        top: 74px;
+        left: $borderWidth * 24.5;
+    }
+    
+    .vu-value-minor-100 {
+        top: 80px;
+        left: $borderWidth * 27;
+    }
+    
+    .vu-label-min, .vu-label-max {
+        margin-top: $borderWidth * 3;
+    }
+    
+    .vu-label-min {
+        left: $borderWidth * 4;
+    }
+    
+    .vu-label-max {
+        color: $vuRed;
+        right: $borderWidth * 4;
+    }
+    
+    .vu-value-major-n20 {
+        left: $borderWidth * 3;
+        top: 68px;
+    }
+    
+    .vu-value-major-n10 {
+        left: $borderWidth * 7;
+        top: 36px;
+    }
+    
+    .vu-value-major-n7 {
+        left: $borderWidth * 11;
+        top: 16px;
+    }
+    
+    .vu-value-major-n5 {
+        left: $borderWidth * 15;
+        top: 2px;
+    }
+    
+    .vu-value-major-n3 {
+        left: $borderWidth * 19.5;
+        top: -6px;
+    }
+    
+    .vu-value-major-n1 {
+        left: $borderWidth * 24.5;
+        top: -6px;
+    }
+    
+    .vu-value-major-0 {
+        left: $borderWidth * 30;
+        top: 0px;
+    }
+    
+    .vu-value-major-1 {
+        left: $borderWidth * 33;
+        top: 16px;
+        color: $vuRed;
+    }
+    
+    .vu-value-major-2 {
+        left: $borderWidth * 36;
+        top: 40px;
+        color: $vuRed;
+    }
+    
+    .vu-value-major-3 {
+        left: $borderWidth * 39;
+        top: 68px;
+        color: $vuRed;
+    }
+    
+    .vu-meter-needle {
+        position: absolute;
+        width: 3px;
+        height: 143px;
+        transform: rotate(-60deg);
+        background: #333;
+        left: $meterWidth * .5 - 3px;
+        bottom: $borderWidth * 7;
+        z-index: 3;
+        transform-origin: bottom center;
+        box-shadow: 5px 5px 5px #00000088;
+    }
+    
+    .vu-meter-curve {
+        transform: scale(1.0038);
+    }
+    
+    .vu-meter-guide {
+        fill: transparent;
+        position: absolute;
+        top: -($meterHeight * .5) - 16px;
+        left: 0;
+        z-index: 2;
+        stroke: black;
+        fill: #444;
+    }
+    
+    .vu-meter-guide-over {
+        fill: $vuRed;
+        stroke: $vuRed;
+    }
+    
+    .vu-meter-screw {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        background: radial-gradient(#222 33%, #111);
+        border: 2px solid black;
+        border-radius: 32px;
+        bottom: $borderWidth * 4;
+        left: $meterWidth * .5 - 16;
+        z-index: 7;
+    }
+    
+    .vu-meter-screw-spectral {
+        background: radial-gradient(farthest-corner at 8px 0px, #ffffff88, transparent 50%);
+    }
+    
+    .vu-meter-screw-notch {
+        width: 5px;
+        height: 34px;
+        position: absolute;
+        background: linear-gradient(black, #111, black);
+        transform: rotate(45deg);
+        border-radius: 0px;
+        bottom: $borderWidth * 4;
+        left: $meterWidth * .5 - 16 + 16;
+        z-index: 7;
+    }
+}
+
+.audio-controls-wrapper {
+    margin: 8px;
+    margin-left: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 10;
+
+    .initAudio {
+        background: darkgreen;
+        color: white;
+    }
+
+    .mute {
+        background: darkred;
+    }
+
+    button, a {
+        font-family: 'Squada One';
+        display: inline-block;
+        margin: 8px;
+        z-index: 10;
+        font-size: .8em;
+        color: white;
+    }
+
+    a {
+        background: black;
+        padding: 4px 8px;
+        vertical-align: middle;
+    }
+}
