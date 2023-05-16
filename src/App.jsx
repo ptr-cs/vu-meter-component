@@ -146,6 +146,7 @@ function init() {
       <div className="audio-controls-wrapper">
         <button type="button" title="initialize audio" className="initAudio" onClick={(evt) => clickHandler(evt)}>Init Audio</button>
         <button type="button" title="toggle audio mute" className="mute">Mute</button>
+        <a title="github" href="https://github.com/DivideByZeno/vu-meter-component" className="github">Github</a>
       </div>
     </>
   )

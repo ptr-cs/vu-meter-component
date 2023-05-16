@@ -2,6 +2,11 @@
   font-family: "Squada One";
   src: url("./assets/Squada_One/SquadaOne-Regular.ttf") format("truetype");
 }
+#root {
+  overflow: auto;
+  height: 100vh;
+}
+
 .vu-meter {
   background: linear-gradient(to top, #666, #777);
   width: 384px;
@@ -352,6 +357,7 @@
   margin-left: 16px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   z-index: 10;
 }
 .audio-controls-wrapper .initAudio {
@@ -360,9 +366,12 @@
 .audio-controls-wrapper .mute {
   background: darkred;
 }
-.audio-controls-wrapper button {
+.audio-controls-wrapper button, .audio-controls-wrapper a {
   display: inline-block;
   margin: 8px;
   z-index: 10;
   font-size: 0.8em;
+}
+.audio-controls-wrapper a {
+  vertical-align: middle;
 }/*# sourceMappingURL=App.css.map */

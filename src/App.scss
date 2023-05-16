@@ -10,6 +10,11 @@ $vuRed: darkred;
     src: url('./assets/Squada_One/SquadaOne-Regular.ttf') format('truetype');
 }
 
+#root {
+    overflow: auto;
+    height: 100vh;
+}
+
 .vu-meter {
     background: linear-gradient(to top, #666, #777);
     width: $meterWidth;
@@ -422,6 +427,7 @@ border-style: solid;
     margin-left: 16px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     z-index: 10;
     
     .initAudio {
@@ -432,10 +438,14 @@ border-style: solid;
         background: darkred;
     }
     
-    button {
+    button, a {
         display: inline-block;
         margin: 8px;
         z-index: 10;
         font-size: .8em;
+    }
+    
+    a {
+        vertical-align: middle;
     }
 }
