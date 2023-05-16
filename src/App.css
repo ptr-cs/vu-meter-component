@@ -16,15 +16,10 @@
   font-weight: normal;
   font-style: normal;
 }
-.vu-meter .vu-meter-border1, .vu-meter .vu-meter-border2, .vu-meter .vu-meter-border3 {
+.vu-meter .vu-meter-border {
   position: absolute;
   width: 368px;
   height: 240px;
-}
-.vu-meter .vu-meter-border3 {
-  width: 384px;
-  height: 256px;
-  opacity: 0.2;
 }
 .vu-meter .vu-meter-border1 {
   border: 8px solid #000;
@@ -35,6 +30,63 @@
   -o-border-image: linear-gradient(#ccc, rgba(102, 102, 102, 0.5333333333)) 90;
      border-image: linear-gradient(#ccc, rgba(102, 102, 102, 0.5333333333)) 90;
   border-style: solid;
+}
+.vu-meter .vu-meter-border3 {
+  width: 384px;
+  height: 256px;
+  opacity: 0.5;
+}
+.vu-meter .vu-meter-border4 {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
+  height: 256px;
+}
+.vu-meter .vu-meter-border5 {
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
+  height: 256px;
+  right: 0;
+}
+.vu-meter .vu-meter-border6 {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
+  width: 384px;
+}
+.vu-meter .vu-meter-border7 {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
+  width: 384px;
+  bottom: 0;
+}
+.vu-meter .vu-meter-border8 {
+  background: linear-gradient(270deg, transparent, rgba(0, 0, 0, 0.7333333333));
+  width: 4px;
+  left: 8px;
+  top: 8px;
+  bottom: 0;
+}
+.vu-meter .vu-meter-border9 {
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.7333333333));
+  width: 4px;
+  right: 8px;
+  top: 8px;
+  bottom: 0;
+}
+.vu-meter .vu-meter-border10 {
+  background: linear-gradient(0deg, transparent, rgba(0, 0, 0, 0.7333333333));
+  height: 4px;
+  left: 8px;
+  top: 8px;
+}
+.vu-meter .vu-meter-border11 {
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7333333333));
+  height: 4px;
+  left: 8px;
+  bottom: 8px;
+}
+.vu-meter .vu-meter-border12 {
+  border: 1px solid black;
+  left: 12px;
+  top: 12px;
+  height: 230px;
+  width: 358px;
+  z-index: 7;
 }
 .vu-meter .vu-meter-background {
   background: radial-gradient(gold, goldenrod);

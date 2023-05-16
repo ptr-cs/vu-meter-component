@@ -6,6 +6,7 @@ function App() {
 
 const [audioInitialized, setAudioInitialized] = useState(false);
 var [analyser, setAnalyser] = useState(null);
+var [gainNode, setGainNode] = useState(null);
   
 function init() {
 
@@ -53,11 +54,9 @@ function init() {
   analyser.minDecibels = -90;
   analyser.maxDecibels = 0;
   analyser.smoothingTimeConstant = 0.85;
-  analyser.fftSize = 64; //2048;
+  analyser.fftSize = 2048; //2048;
 
-  const gainNode = audioCtx.createGain();
-  const biquadFilter = audioCtx.createBiquadFilter();
-  
+  gainNode = audioCtx.createGain();
 
 
   // Main block for doing the audio recording
@@ -68,12 +67,13 @@ function init() {
       .getUserMedia(constraints)
       .then(function (stream) {
         source = audioCtx.createMediaStreamSource(stream);
-        source.connect(biquadFilter);
-        biquadFilter.connect(gainNode);
+        source.connect(gainNode);
+        //biquadFilter.connect(gainNode);
         gainNode.connect(analyser);
         //echoDelay.placeBetween(gainNode, analyser);
         analyser.connect(audioCtx.destination);
         setAnalyser(analyser);
+        setGainNode(gainNode);
         setAudioInitialized(true);
       })
       .catch(function (err) {
@@ -140,7 +140,8 @@ function init() {
     <>
       <VuMeter 
         analyser={analyser}
-        audioInitialized={audioInitialized}></VuMeter>
+        audioInitialized={audioInitialized}
+        gainNode={gainNode}></VuMeter>
         
       <div className="audio-controls-wrapper">
         <button type="button" title="initialize audio" className="initAudio" onClick={(evt) => clickHandler(evt)}>Init Audio</button>

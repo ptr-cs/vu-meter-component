@@ -24,16 +24,10 @@ $vuRed: darkred;
     font-weight: normal;
     font-style: normal;
     
-    .vu-meter-border1, .vu-meter-border2, .vu-meter-border3 {
+    .vu-meter-border {
         position: absolute;
         width: $meterWidth - ($borderWidth * 2);
         height: $meterHeight - ($borderWidth * 2);
-    }
-    
-    .vu-meter-border3 {
-        width: $meterWidth;
-        height: $meterHeight;
-        opacity: .2;
     }
     
     .vu-meter-border1 {
@@ -46,6 +40,73 @@ $vuRed: darkred;
         border-width: $borderWidth;
         border-image: linear-gradient(#ccc, #66666688) 90;
 border-style: solid;
+    }
+    
+    .vu-meter-border3 {
+        width: $meterWidth;
+        height: $meterHeight;
+        opacity: .5;
+    }
+    
+    .vu-meter-border4 {
+        background: linear-gradient(90deg, #000000bb, transparent 2%);
+        height: $meterHeight;
+    }
+    
+    .vu-meter-border5 {
+        background: linear-gradient(270deg, #000000bb, transparent 2%);
+        height: $meterHeight;
+        right: 0;
+    }
+    
+    .vu-meter-border6 {
+        background: linear-gradient(180deg, #000000bb, transparent 2%);
+        width: $meterWidth;
+    }
+    
+    .vu-meter-border7 {
+        background: linear-gradient(0deg, #000000bb, transparent 2%);
+        width: $meterWidth;
+        bottom: 0;
+    }
+    
+    .vu-meter-border8 {
+        background: linear-gradient(270deg, transparent, #000000bb );
+        width: $borderWidth * .5;
+        left: $borderWidth;
+        top: $borderWidth;
+        bottom: 0;
+    }
+    
+    .vu-meter-border9 {
+        background: linear-gradient(90deg, transparent, #000000bb );
+        width: $borderWidth * .5;
+        right: $borderWidth;
+        top: $borderWidth;
+        bottom: 0;
+    }
+    
+    .vu-meter-border10 {
+        background: linear-gradient(0deg, transparent, #000000bb );
+        height: $borderWidth * .5;
+        left: $borderWidth;
+        top: $borderWidth;
+    }
+    
+    .vu-meter-border11 {
+        background: linear-gradient(180deg, transparent, #000000bb );
+        height: $borderWidth * .5;
+        left: $borderWidth;
+        bottom: $borderWidth;
+    }
+    
+    .vu-meter-border12 {
+        border: 1px solid black;
+        left: $borderWidth + $borderWidth / 2;
+        top: $borderWidth + $borderWidth / 2;
+        height: $meterHeight - $borderWidth * 3 - 2;
+        width: $meterWidth - $borderWidth * 3 - 2;
+        z-index: 7;
     }
     
     .vu-meter-background {

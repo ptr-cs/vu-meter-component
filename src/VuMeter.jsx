@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-export default function VuMeter({analyser, audioInitialized}) {
+export default function VuMeter({analyser, audioInitialized, gainNode}) {
     
     const meterNeedle = document.getElementById("vu-meter-needle");
     
@@ -11,29 +11,25 @@ export default function VuMeter({analyser, audioInitialized}) {
         // // We can use Float32Array instead of Uint8Array if we want higher precision
         // // const dataArray = new Float32Array(bufferLength);
         // const dataArray = new Uint8Array(bufferLength);
-        
-        const bufferLength = analyser.frequencyBinCount;
-        console.log(bufferLength);
+        const sampleBuffer = new Float32Array(analyser.fftSize);
 
-        // See comment above for Float32Array()
-        const dataArray = new Uint8Array(bufferLength);
     
-        let drawVisual;
+        function loop() {
+            //gainNode.gain.value = 0.5 * (1 + Math.sin(Date.now() / 4e2));
         
-        const draw = function () {
-          drawVisual = requestAnimationFrame(draw);
-          analyser.getByteFrequencyData(dataArray);
-          var avg = 0;
-          for (let i = 0; i < bufferLength; i++) {
-            // console.log(dataArray[i])
-            // meterNeedle.style.transform = "rotate(" + (dataArray[i]) + "deg)";
-            // console.log("math: " + (-60 + dataArray[i]))
-            avg += dataArray[i];
+            analyser.getFloatTimeDomainData(sampleBuffer);
+        
+            let sumOfSquares = 0;
+            for (let i = 0; i < sampleBuffer.length; i++) {
+              sumOfSquares += sampleBuffer[i] ** 2;
+            }
+            const avgPowerDecibels = (10 * Math.log10(sumOfSquares / sampleBuffer.length));
+    
+            meterNeedle.style.transform = "rotate(" + Math.max(50 +  (0 + avgPowerDecibels), -60) + "deg)";
+        
+            requestAnimationFrame(loop);
           }
-          meterNeedle.style.transform = "rotate(" + (-60 + (avg / dataArray.length)) + "deg)";
-        }
-        
-        draw();
+          loop();
       }
       
       useEffect(() => {
@@ -45,9 +41,9 @@ export default function VuMeter({analyser, audioInitialized}) {
         <>
         <div className="vu-meter">
             
-            <div className="vu-meter-border1"></div>
-            <div className="vu-meter-border2"></div>
-            <svg xmlns="http://www.w3.org/2000/svg" className="vu-meter-border3">
+            <div className="vu-meter-border vu-meter-border1"></div>
+            <div className="vu-meter-border vu-meter-border2"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" className="vu-meter-border vu-meter-border3">
                 <filter id="coolEffect">
                     <feTurbulence baseFrequency="0.1 1"/>
                     <feColorMatrix values="0 0 0 .07 .01
@@ -57,6 +53,16 @@ export default function VuMeter({analyser, audioInitialized}) {
                 </filter>
                 <rect width="100%" height="100%" filter="url(#coolEffect)"/>
             </svg>
+            <div className="vu-meter-border vu-meter-border4"></div>
+            <div className="vu-meter-border vu-meter-border5"></div>
+            <div className="vu-meter-border vu-meter-border6"></div>
+            <div className="vu-meter-border vu-meter-border7"></div>
+            
+            <div className="vu-meter-border vu-meter-border8"></div>
+            <div className="vu-meter-border vu-meter-border9"></div>
+            <div className="vu-meter-border vu-meter-border10"></div>
+            <div className="vu-meter-border vu-meter-border11"></div>
+            <div className="vu-meter-border vu-meter-border12"></div>
             
             <div className="vu-meter-background"></div>
             <div className="vu-meter-background-overlay"></div>
