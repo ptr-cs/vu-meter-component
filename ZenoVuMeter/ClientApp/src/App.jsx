@@ -7,6 +7,8 @@ function App() {
 const [audioInitialized, setAudioInitialized] = useState(false);
 var [analyser, setAnalyser] = useState(null);
 var [gainNode, setGainNode] = useState(null);
+    var [isMuted, setIsMuted] = useState(null);
+    var [isInitialized, setIsInitialized] = useState(null);
   
 function init() {
 
@@ -75,63 +77,34 @@ function init() {
         setAnalyser(analyser);
         setGainNode(gainNode);
         setAudioInitialized(true);
+        setIsInitialized(true);
       })
       .catch(function (err) {
-        console.log("The following gUM error occured: " + err);
+          console.log("The following gUM error occured: " + err);
+          setIsInitialized(false);
       });
   } else {
-    console.log("getUserMedia not supported on your browser!");
+      console.log("getUserMedia not supported on your browser!");
+      setIsInitialized(false);
   }
 
-  // function visualize() {
+  //mute.onclick = voiceMute;
 
-  //   analyser.fftSize = 2048;
-  //   const bufferLength = analyser.fftSize;
-  //   console.log(bufferLength);
-
-  //   // We can use Float32Array instead of Uint8Array if we want higher precision
-  //   // const dataArray = new Float32Array(bufferLength);
-  //   const dataArray = new Uint8Array(bufferLength);
-
-  //   let drawVisual;
     
-  //   const draw = function () {
-  //     drawVisual = requestAnimationFrame(draw);
-  //     analyser.getByteTimeDomainData(dataArray);
-  //     for (let i = 0; i < bufferLength; i++) {
-  //       console.log(dataArray[i])
-  //     }
-  //     console.log("draw")
-  //   }
-    
-  //   draw();
-  // }
-
-  //visualize();  
-
-  mute.onclick = voiceMute;
-
-  function voiceMute() {
-    console.log("voiceMute")
-    if (mute.id === "") {
-      gainNode.gain.value = 0;
-      mute.id = "activated";
-      mute.innerHTML = "Unmute";
-    } else {
-      gainNode.gain.value = 1;
-      mute.id = "";
-      mute.innerHTML = "Mute";
-    }
-  }
 }
+
+    function toggleMute() {
+        console.log("voiceMute")
+        if (!isMuted) {
+            gainNode.gain.value = 0;
+            setIsMuted(true);
+        } else {
+            gainNode.gain.value = 1;
+            setIsMuted(false);
+        }
+    }
   
   var clickHandler = () => {
-    //   var voice = new Pizzicato.Sound({
-    //     source: 'input',
-    //     options: { volume: 0.8 }
-    // });
-    
-    // console.log(voice)
     
     init();
   }
@@ -141,14 +114,19 @@ function init() {
       <VuMeter 
         analyser={analyser}
         audioInitialized={audioInitialized}
-        gainNode={gainNode}></VuMeter>
+        gainNode={gainNode}
+        init={init}
+        toggleMute={toggleMute}
+        isMuted={isMuted}
+        isInitialized={isInitialized}></VuMeter>
         
-      <div className="audio-controls-wrapper">
-        <button type="button" title="initialize audio" className="initAudio" onClick={(evt) => clickHandler(evt)}>Init Audio</button>
-        <button type="button" title="toggle audio mute" className="mute">Mute</button>
-        <a title="github" href="https://github.com/DivideByZeno/vu-meter-component" className="github">Github</a>
-      </div>
-    </>
+      
+      </>
+    //<div className="audio-controls-wrapper">
+      //  <button type="button" title="initialize audio" className="initAudio" onClick={(evt) => clickHandler(evt)}>Init Audio</button>
+      //  <button type="button" title="toggle audio mute" className="mute">Mute</button>
+      //  <a title="github" href="https://github.com/DivideByZeno/vu-meter-component" className="github">Github</a>
+      //</div>
   )
 }
 

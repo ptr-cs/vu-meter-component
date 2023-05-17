@@ -109,7 +109,7 @@ body {
   top: 4px;
   margin: 8px;
 }
-.vu-meter .vu-meter-background-shadow, .vu-meter .vu-meter-background-shadow-up {
+.vu-meter .vu-meter-background-shadow, .vu-meter .vu-meter-background-shadow-up, .vu-meter .vu-meter-background-shadow-up-big, .vu-meter .vu-meter-background-shadow-big {
   margin: 8px;
   position: absolute;
   width: 360px;
@@ -120,9 +120,19 @@ body {
   height: 232px;
   top: 4px;
 }
+.vu-meter .vu-meter-background-shadow-big {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 10%, rgba(255, 196, 0, 0) 20%);
+  height: 232px;
+  top: 4px;
+}
 .vu-meter .vu-meter-background-shadow-up {
   background: linear-gradient(0deg, #000000 0%, rgba(255, 196, 0, 0) 15%);
   height: 64px;
+  bottom: 68px;
+}
+.vu-meter .vu-meter-background-shadow-up-big {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5333333333) 0%, transparent);
+  height: 48px;
   bottom: 68px;
 }
 .vu-meter .vu-meter-background-glass-down, .vu-meter .vu-meter-background-glass-up,
@@ -331,7 +341,7 @@ body {
   background: radial-gradient(#222 33%, #111);
   border: 2px solid black;
   border-radius: 32px;
-  bottom: 32px;
+  bottom: 24px;
   left: 176px;
   z-index: 7;
 }
@@ -345,9 +355,159 @@ body {
   background: linear-gradient(black, #111, black);
   transform: rotate(45deg);
   border-radius: 0px;
-  bottom: 32px;
+  bottom: 24px;
   left: 192px;
   z-index: 7;
+}
+.vu-meter .button-init-button-label {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 0px 8px;
+}
+.vu-meter .button-init-button-label p {
+  transform: scale(1.75);
+  flex-grow: 1;
+  margin-left: -8px;
+}
+.vu-meter button.initAudio, .vu-meter button.muteAudio {
+  z-index: 8;
+  padding: 8px;
+  position: absolute;
+  background: darkgoldenrod;
+  color: black;
+  border-radius: 4px;
+  bottom: 20px;
+  left: 24px;
+  width: 128px;
+  height: 48px;
+  padding: 0;
+  vertical-align: middle;
+  font-family: "Squada One";
+}
+.vu-meter button.initAudio svg, .vu-meter button.muteAudio svg {
+  height: 28px;
+  width: auto;
+  fill: black;
+}
+.vu-meter button.initAudio div.button-border, .vu-meter button.initAudio div.button-border-2, .vu-meter button.initAudio div.button-border-3, .vu-meter button.initAudio div.button-border-4, .vu-meter button.muteAudio div.button-border, .vu-meter button.muteAudio div.button-border-2, .vu-meter button.muteAudio div.button-border-3, .vu-meter button.muteAudio div.button-border-4 {
+  height: 4px;
+  position: absolute;
+  width: 116px;
+  z-index: 6;
+}
+.vu-meter button.initAudio div.button-border, .vu-meter button.muteAudio div.button-border {
+  top: 0;
+  left: 4px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.5333333333), transparent);
+}
+.vu-meter button.initAudio div.button-border-2, .vu-meter button.muteAudio div.button-border-2 {
+  bottom: 0;
+  top: unset;
+  left: 4px;
+  background: linear-gradient(0deg, transparent, white);
+}
+.vu-meter button.initAudio div.button-border-3, .vu-meter button.muteAudio div.button-border-3 {
+  left: 0;
+  width: 4px;
+  height: 36px;
+  top: 4px;
+  background: linear-gradient(90deg, transparent, white);
+}
+.vu-meter button.initAudio div.button-border-4, .vu-meter button.muteAudio div.button-border-4 {
+  right: 0;
+  width: 4px;
+  height: 36px;
+  top: 4px;
+  background: linear-gradient(270deg, transparent, white);
+}
+.vu-meter button.initAudio .button-border-5, .vu-meter button.initAudio .button-border-6, .vu-meter button.initAudio .button-border-7, .vu-meter button.initAudio .button-border-8, .vu-meter button.initAudio .button-border-9,
+.vu-meter button.initAudio .button-border-10, .vu-meter button.muteAudio .button-border-5, .vu-meter button.muteAudio .button-border-6, .vu-meter button.muteAudio .button-border-7, .vu-meter button.muteAudio .button-border-8, .vu-meter button.muteAudio .button-border-9,
+.vu-meter button.muteAudio .button-border-10 {
+  position: absolute;
+  z-index: 7;
+}
+.vu-meter button.initAudio .button-border-5, .vu-meter button.muteAudio .button-border-5 {
+  width: 4px;
+  height: 4px;
+  top: 0;
+  background: linear-gradient(135deg, transparent 50%, white);
+}
+.vu-meter button.initAudio .button-border-6, .vu-meter button.muteAudio .button-border-6 {
+  width: 4px;
+  height: 4px;
+  top: 0;
+  right: 0;
+  background: linear-gradient(225deg, transparent 50%, white);
+}
+.vu-meter button.initAudio .button-border-7, .vu-meter button.muteAudio .button-border-7 {
+  width: 4px;
+  height: 4px;
+  margin-top: -2px;
+  bottom: 0;
+  z-index: 8;
+  background: linear-gradient(45deg, transparent 50%, white);
+}
+.vu-meter button.initAudio .button-border-8, .vu-meter button.muteAudio .button-border-8 {
+  width: 4px;
+  height: 4px;
+  margin-top: -2px;
+  bottom: 0;
+  z-index: 8;
+  right: 0;
+  background: linear-gradient(315deg, transparent 50%, white);
+}
+.vu-meter button.initAudio .button-border-9, .vu-meter button.muteAudio .button-border-9 {
+  width: 124px;
+  height: 44px;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4));
+  top: 0;
+  position: absolute;
+}
+.vu-meter button.initAudio .button-border-10, .vu-meter button.muteAudio .button-border-10 {
+  width: 122px;
+  height: 42px;
+  background: linear-gradient(315deg, transparent 50%, rgba(255, 255, 255, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.5333333333);
+  top: 0;
+  position: absolute;
+  border-radius: 4px;
+}
+.vu-meter button.initAudio .button-border-11, .vu-meter button.muteAudio .button-border-11 {
+  width: 114px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.5333333333);
+  top: 4px;
+  left: 4px;
+  position: absolute;
+}
+.vu-meter button.initAudio .button-border-12, .vu-meter button.muteAudio .button-border-12 {
+  width: 122px;
+  height: 42px;
+  background: linear-gradient(178deg, transparent 50%, rgba(0, 0, 0, 0.6666666667));
+  top: 0;
+  z-index: 5;
+  position: absolute;
+}
+.vu-meter button.initAudio .button-border-13, .vu-meter button.muteAudio .button-border-13 {
+  width: 124px;
+  height: 44px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7333333333) 0%, rgba(0, 0, 0, 0) 25%);
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 5;
+}
+.vu-meter button.muteAudio {
+  right: 24px;
+  left: unset;
+}
+.vu-meter button.muteAudio:disabled {
+  background: gray;
+}
+.vu-meter button.muteAudio.isMuted {
+  background: red;
 }
 
 .audio-controls-wrapper {
