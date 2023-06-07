@@ -360,16 +360,15 @@ body {
   z-index: 7;
 }
 .vu-meter .button-init-button-label {
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
   padding: 0px 8px;
 }
 .vu-meter .button-init-button-label p {
-  transform: scale(1.75);
+  font-size: 2em;
   flex-grow: 1;
-  margin-left: -8px;
+  margin: 0;
 }
 .vu-meter button.initAudio, .vu-meter button.muteAudio {
   z-index: 8;

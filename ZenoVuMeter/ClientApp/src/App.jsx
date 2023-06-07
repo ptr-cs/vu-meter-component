@@ -73,7 +73,7 @@ function init() {
         //biquadFilter.connect(gainNode);
         gainNode.connect(analyser);
         //echoDelay.placeBetween(gainNode, analyser);
-        analyser.connect(audioCtx.destination);
+        //analyser.connect(audioCtx.destination);
         setAnalyser(analyser);
         setGainNode(gainNode);
         setAudioInitialized(true);
