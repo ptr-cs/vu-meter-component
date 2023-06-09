@@ -104,11 +104,6 @@ function init() {
         }
     }
   
-  var clickHandler = () => {
-    
-    init();
-  }
-
   return (
     <>
       <VuMeter 
