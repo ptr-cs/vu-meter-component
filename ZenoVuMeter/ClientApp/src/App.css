@@ -62,8 +62,8 @@ body {
 
 .vu-meter {
   background: linear-gradient(to top, #666, #777);
-  width: 384px;
-  height: 256px;
+  width: 512px;
+  height: 320px;
   border: 2px solid #000;
   background: radial-gradient(#888, #333);
   margin: 0px;
@@ -76,108 +76,108 @@ body {
 }
 .vu-meter .vu-meter-border {
   position: absolute;
-  width: 368px;
-  height: 240px;
+  width: 480px;
+  height: 288px;
 }
 .vu-meter .vu-meter-border1 {
-  border: 8px solid #000;
+  border: 16px solid #000;
 }
 .vu-meter .vu-meter-border2 {
-  border-top: 8px solid;
-  border-width: 8px;
+  border-top: 16px solid;
+  border-width: 16px;
   border-image: linear-gradient(#ccc, rgba(102, 102, 102, 0.5333333333)) 90;
   border-style: solid;
 }
 .vu-meter .vu-meter-border3 {
-  width: 384px;
-  height: 256px;
+  width: 512px;
+  height: 320px;
   opacity: 0.5;
 }
 .vu-meter .vu-meter-border4 {
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
-  height: 256px;
+  height: 320px;
 }
 .vu-meter .vu-meter-border5 {
   background: linear-gradient(270deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
-  height: 256px;
+  height: 320px;
   right: 0;
 }
 .vu-meter .vu-meter-border6 {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
-  width: 384px;
+  width: 512px;
 }
 .vu-meter .vu-meter-border7 {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.7333333333), transparent 2%);
-  width: 384px;
+  width: 512px;
   bottom: 0;
 }
 .vu-meter .vu-meter-border8 {
   background: linear-gradient(270deg, transparent, rgba(0, 0, 0, 0.7333333333));
-  width: 4px;
-  left: 8px;
-  top: 8px;
+  width: 8px;
+  left: 16px;
+  top: 16px;
   bottom: 0;
 }
 .vu-meter .vu-meter-border9 {
   background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.7333333333));
-  width: 4px;
-  right: 8px;
-  top: 8px;
+  width: 8px;
+  right: 16px;
+  top: 16px;
   bottom: 0;
 }
 .vu-meter .vu-meter-border10 {
   background: linear-gradient(0deg, transparent, rgba(0, 0, 0, 0.7333333333));
-  height: 4px;
-  left: 8px;
-  top: 8px;
+  height: 8px;
+  left: 16px;
+  top: 16px;
 }
 .vu-meter .vu-meter-border11 {
   background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7333333333));
-  height: 4px;
-  left: 8px;
-  bottom: 8px;
+  height: 8px;
+  left: 16px;
+  bottom: 16px;
 }
 .vu-meter .vu-meter-border12 {
   border: 1px solid black;
-  left: 12px;
-  top: 12px;
-  height: 230px;
-  width: 358px;
+  left: 24px;
+  top: 24px;
+  height: 270px;
+  width: 462px;
   z-index: 7;
 }
 .vu-meter .vu-meter-background {
   background: radial-gradient(gold, goldenrod);
-  width: 360px;
-  height: 232px;
+  width: 464px;
+  height: 272px;
   position: absolute;
-  left: 4px;
-  top: 4px;
+  left: 8px;
+  top: 8px;
   margin: 8px;
 }
 .vu-meter .vu-meter-background-overlay {
   background: linear-gradient(-45deg, rgba(255, 140, 0, 0.2666666667), rgba(255, 196, 0, 0.5333333333));
-  width: 360px;
-  height: 232px;
+  width: 464px;
+  height: 272px;
   position: absolute;
-  left: 4px;
-  top: 4px;
+  left: 8px;
+  top: 8px;
   margin: 8px;
 }
 .vu-meter .vu-meter-background-shadow, .vu-meter .vu-meter-background-shadow-up, .vu-meter .vu-meter-background-shadow-up-big, .vu-meter .vu-meter-background-shadow-big {
   margin: 8px;
   position: absolute;
-  width: 360px;
-  left: 4px;
+  width: 464px;
+  left: 8px;
 }
 .vu-meter .vu-meter-background-shadow {
   background: linear-gradient(180deg, #000000 0%, rgba(255, 196, 0, 0) 5%);
-  height: 232px;
-  top: 4px;
+  height: 272px;
+  top: 8px;
 }
 .vu-meter .vu-meter-background-shadow-big {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 10%, rgba(255, 196, 0, 0) 20%);
-  height: 232px;
-  top: 4px;
+  height: 272px;
+  top: 8px;
 }
 .vu-meter .vu-meter-background-shadow-up {
   background: linear-gradient(0deg, #000000 0%, rgba(255, 196, 0, 0) 15%);
@@ -186,16 +186,16 @@ body {
 }
 .vu-meter .vu-meter-background-shadow-up-big {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.5333333333) 0%, transparent);
-  height: 48px;
+  height: 96px;
   bottom: 68px;
 }
 .vu-meter .vu-meter-background-glass-down, .vu-meter .vu-meter-background-glass-up,
 .vu-meter .vu-meter-background-glass-left, .vu-meter .vu-meter-background-glass-right {
   margin: 8px;
   position: absolute;
-  width: 360px;
-  height: 232px;
-  left: 4px;
+  width: 464px;
+  height: 272px;
+  left: 8px;
 }
 .vu-meter .vu-meter-background-glass-down, .vu-meter .vu-meter-background-glass-up,
 .vu-meter .vu-meter-background-glass-left, .vu-meter .vu-meter-background-glass-right,
@@ -203,32 +203,32 @@ body {
   z-index: 7;
 }
 .vu-meter .vu-meter-background-glass-down {
-  top: 12px;
+  top: 24px;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.5333333333) 0%, transparent 3%);
 }
 .vu-meter .vu-meter-background-glass-up {
-  bottom: 72px;
+  bottom: 144px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, transparent 3%);
 }
 .vu-meter .vu-meter-background-glass-left {
-  height: 156px;
-  bottom: 72px;
-  left: 4px;
+  height: 120px;
+  bottom: 144px;
+  left: 8px;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.5333333333) 0%, transparent 2%);
 }
 .vu-meter .vu-meter-background-glass-right {
-  height: 156px;
-  bottom: 72px;
+  height: 120px;
+  bottom: 144px;
   right: 0;
   background: linear-gradient(270deg, rgba(0, 0, 0, 0.5333333333) 0%, transparent 2%);
 }
 .vu-meter .vu-meter-background-glass-border {
   border: 1px solid rgba(0, 0, 0, 0.3333333333);
   position: absolute;
-  left: 17.2px;
-  top: 24px;
-  width: 348px;
-  height: 146px;
+  left: 34.4px;
+  top: 48px;
+  width: 440px;
+  height: 100px;
 }
 .vu-meter .vu-meter-light-1, .vu-meter .vu-meter-light-2 {
   position: absolute;
@@ -237,24 +237,24 @@ body {
   border-radius: 64px;
   background: radial-gradient(circle at center, white 0, rgba(255, 255, 255, 0) 100%);
   filter: blur(16px);
-  bottom: 32px;
+  bottom: 64px;
   z-index: 3;
   opacity: 0.9;
 }
 .vu-meter .vu-meter-light-1 {
-  left: 32px;
+  left: 64px;
 }
 .vu-meter .vu-meter-light-2 {
-  right: 32px;
+  right: 64px;
 }
 .vu-meter .vu-meter-bar, .vu-meter .vu-meter-bar-texture, .vu-meter .vu-meter-bar-shadow {
   position: absolute;
   z-index: 6;
-  width: 360px;
+  width: 464px;
   height: 64px;
   background: radial-gradient(#222, #111);
-  left: 12px;
-  bottom: 12px;
+  left: 24px;
+  bottom: 24px;
 }
 .vu-meter .vu-meter-bar-texture {
   opacity: 0.25;
@@ -271,92 +271,92 @@ body {
   position: absolute;
 }
 .vu-meter .vu-label-info {
-  bottom: 68px;
+  bottom: 136px;
   font-size: 0.5em;
 }
 .vu-meter .vu-label-brand {
-  left: 24px;
+  left: 48px;
 }
 .vu-meter .vu-label-version {
-  right: 24px;
+  right: 48px;
 }
 .vu-meter .vu-value-minor {
   font-size: 0.8em;
 }
 .vu-meter .vu-value-minor-0 {
   top: 120px;
-  left: 104px;
+  left: 208px;
 }
 .vu-meter .vu-value-minor-20 {
   top: 104px;
-  left: 120px;
+  left: 240px;
 }
 .vu-meter .vu-value-minor-40 {
   top: 86px;
-  left: 144px;
+  left: 288px;
 }
 .vu-meter .vu-value-minor-60 {
   top: 78px;
-  left: 168px;
+  left: 336px;
 }
 .vu-meter .vu-value-minor-80 {
   top: 74px;
-  left: 196px;
+  left: 392px;
 }
 .vu-meter .vu-value-minor-100 {
   top: 80px;
-  left: 216px;
+  left: 432px;
 }
 .vu-meter .vu-label-min, .vu-meter .vu-label-max {
-  margin-top: 24px;
+  margin-top: 48px;
 }
 .vu-meter .vu-label-min {
-  left: 32px;
+  left: 64px;
 }
 .vu-meter .vu-label-max {
   color: darkred;
-  right: 32px;
+  right: 64px;
 }
 .vu-meter .vu-value-major-n20 {
-  left: 24px;
+  left: 48px;
   top: 68px;
 }
 .vu-meter .vu-value-major-n10 {
-  left: 56px;
+  left: 112px;
   top: 36px;
 }
 .vu-meter .vu-value-major-n7 {
-  left: 88px;
+  left: 176px;
   top: 16px;
 }
 .vu-meter .vu-value-major-n5 {
-  left: 120px;
+  left: 240px;
   top: 2px;
 }
 .vu-meter .vu-value-major-n3 {
-  left: 156px;
+  left: 312px;
   top: -6px;
 }
 .vu-meter .vu-value-major-n1 {
-  left: 196px;
+  left: 392px;
   top: -6px;
 }
 .vu-meter .vu-value-major-0 {
-  left: 240px;
+  left: 480px;
   top: 0px;
 }
 .vu-meter .vu-value-major-1 {
-  left: 264px;
+  left: 528px;
   top: 16px;
   color: darkred;
 }
 .vu-meter .vu-value-major-2 {
-  left: 288px;
+  left: 576px;
   top: 40px;
   color: darkred;
 }
 .vu-meter .vu-value-major-3 {
-  left: 312px;
+  left: 624px;
   top: 68px;
   color: darkred;
 }
@@ -366,8 +366,8 @@ body {
   height: 143px;
   transform: rotate(-60deg);
   background: #333;
-  left: 189px;
-  bottom: 56px;
+  left: 253px;
+  bottom: 112px;
   z-index: 3;
   transform-origin: bottom center;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5333333333);
@@ -378,7 +378,7 @@ body {
 .vu-meter .vu-meter-guide {
   fill: transparent;
   position: absolute;
-  top: -144px;
+  top: -176px;
   left: 0;
   z-index: 2;
   stroke: black;
@@ -395,8 +395,8 @@ body {
   background: radial-gradient(#222 33%, #111);
   border: 2px solid black;
   border-radius: 32px;
-  bottom: 24px;
-  left: 176px;
+  bottom: 48px;
+  left: 240px;
   z-index: 7;
 }
 .vu-meter .vu-meter-screw-spectral {
@@ -409,8 +409,8 @@ body {
   background: linear-gradient(black, #111, black);
   transform: rotate(45deg);
   border-radius: 0px;
-  bottom: 24px;
-  left: 192px;
+  bottom: 48px;
+  left: 256px;
   z-index: 7;
 }
 .vu-meter .button-init-button-label {
@@ -431,10 +431,10 @@ body {
   background: darkgoldenrod;
   color: black;
   border-radius: 4px;
-  bottom: 20px;
-  left: 24px;
-  width: 128px;
-  height: 48px;
+  bottom: 40px;
+  left: 48px;
+  width: 256px;
+  height: 96px;
   padding: 0;
   vertical-align: middle;
   font-family: "Squada One";
@@ -445,33 +445,33 @@ body {
   fill: black;
 }
 .vu-meter button.initAudio div.button-border, .vu-meter button.initAudio div.button-border-2, .vu-meter button.initAudio div.button-border-3, .vu-meter button.initAudio div.button-border-4, .vu-meter button.muteAudio div.button-border, .vu-meter button.muteAudio div.button-border-2, .vu-meter button.muteAudio div.button-border-3, .vu-meter button.muteAudio div.button-border-4 {
-  height: 4px;
+  height: 8px;
   position: absolute;
-  width: 116px;
+  width: 232px;
   z-index: 6;
 }
 .vu-meter button.initAudio div.button-border, .vu-meter button.muteAudio div.button-border {
   top: 0;
-  left: 4px;
+  left: 8px;
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.5333333333), transparent);
 }
 .vu-meter button.initAudio div.button-border-2, .vu-meter button.muteAudio div.button-border-2 {
   bottom: 0;
   top: unset;
-  left: 4px;
+  left: 8px;
   background: linear-gradient(0deg, transparent, white);
 }
 .vu-meter button.initAudio div.button-border-3, .vu-meter button.muteAudio div.button-border-3 {
   left: 0;
-  width: 4px;
-  height: 36px;
+  width: 8px;
+  height: 72px;
   top: 4px;
   background: linear-gradient(90deg, transparent, white);
 }
 .vu-meter button.initAudio div.button-border-4, .vu-meter button.muteAudio div.button-border-4 {
   right: 0;
-  width: 4px;
-  height: 36px;
+  width: 8px;
+  height: 72px;
   top: 4px;
   background: linear-gradient(270deg, transparent, white);
 }
@@ -512,15 +512,15 @@ body {
   background: linear-gradient(315deg, transparent 50%, white);
 }
 .vu-meter button.initAudio .button-border-9, .vu-meter button.muteAudio .button-border-9 {
-  width: 124px;
-  height: 44px;
+  width: 248px;
+  height: 88px;
   background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4));
   top: 0;
   position: absolute;
 }
 .vu-meter button.initAudio .button-border-10, .vu-meter button.muteAudio .button-border-10 {
-  width: 122px;
-  height: 42px;
+  width: 244px;
+  height: 84px;
   background: linear-gradient(315deg, transparent 50%, rgba(255, 255, 255, 0.4));
   border: 1px solid rgba(255, 255, 255, 0.5333333333);
   top: 0;
@@ -528,24 +528,24 @@ body {
   border-radius: 4px;
 }
 .vu-meter button.initAudio .button-border-11, .vu-meter button.muteAudio .button-border-11 {
-  width: 114px;
-  height: 34px;
+  width: 228px;
+  height: 68px;
   border: 1px solid rgba(255, 255, 255, 0.5333333333);
-  top: 4px;
-  left: 4px;
+  top: 8px;
+  left: 8px;
   position: absolute;
 }
 .vu-meter button.initAudio .button-border-12, .vu-meter button.muteAudio .button-border-12 {
-  width: 122px;
-  height: 42px;
+  width: 244px;
+  height: 84px;
   background: linear-gradient(178deg, transparent 50%, rgba(0, 0, 0, 0.6666666667));
   top: 0;
   z-index: 5;
   position: absolute;
 }
 .vu-meter button.initAudio .button-border-13, .vu-meter button.muteAudio .button-border-13 {
-  width: 124px;
-  height: 44px;
+  width: 248px;
+  height: 88px;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.7333333333) 0%, rgba(0, 0, 0, 0) 25%);
   top: 0;
   left: 0;
@@ -553,7 +553,7 @@ body {
   z-index: 5;
 }
 .vu-meter button.muteAudio {
-  right: 24px;
+  right: 48px;
   left: unset;
 }
 .vu-meter button.muteAudio:disabled {
@@ -593,6 +593,57 @@ body {
 }
 
 /* ------------------------------------ */
-canvas {
-  border: 1px solid black;
+.vu-meter-v2 div.buttons {
+  position: absolute;
+  left: 40px;
+  top: 248px;
+  width: 464px;
+  height: 64px;
+  display: flex;
+  align-items: inherit;
+  /*        button.settings {
+      background: #cacaca;
+  }*/
+}
+.vu-meter-v2 div.buttons button {
+  flex-grow: 1;
+  flex-basis: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  background: linear-gradient(to bottom, darkgoldenrod -15%, gold 50%, darkgoldenrod 115%);
+  color: black;
+  border-radius: 4px;
+  vertical-align: middle;
+  font-family: "Squada One";
+  font-size: 2.5em;
+  border-radius: 4px;
+}
+.vu-meter-v2 div.buttons button svg {
+  margin-right: 8px;
+  font-size: 0.8em;
+}
+.vu-meter-v2 div.buttons button:first-child {
+  flex-grow: 2;
+}
+.vu-meter-v2 div.buttons button:last-child {
+  flex-grow: 3;
+}
+.vu-meter-v2 div.buttons button:nth-child(2) svg {
+  margin: 8px;
+}
+.vu-meter-v2 div.buttons button:disabled {
+  background: linear-gradient(to bottom, gray -15%, slategray 50%, gray 115%);
+  color: #333;
+}
+.vu-meter-v2 div.buttons button:focus {
+  border: 2px solid white;
+}
+.vu-meter-v2 div.buttons button.initialized {
+  background: linear-gradient(to bottom, green -15%, springgreen 50%, green 115%);
+}
+.vu-meter-v2 div.buttons button.isMuted {
+  background: linear-gradient(to bottom, firebrick -15%, salmon 50%, firebrick 115%);
 }

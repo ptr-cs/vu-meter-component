@@ -1,8 +1,14 @@
 @use "sass:math";
 
-$meterWidth: 384px;
-$meterHeight: 256px;
-$borderWidth: 8px;
+$meterWidth: 512px;
+$meterHeight: 320px;
+$gaugeHeight: $meterHeight * .8;
+$sp: 8px; // unit of spacing
+$meterMargin: $sp * 2;
+$borderSize: $sp * 2;
+$borderWidth: $borderSize;
+$smallBorderSize: $sp;
+$glassOutlineRectMargin: $sp;
 $vuRed: darkred;
 
 @font-face { 
@@ -35,6 +41,7 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -691,6 +698,69 @@ body {
 
 /* ------------------------------------ */
 
-canvas {
-    border: 1px solid black;
+.vu-meter-v2 {
+    div.buttons {
+        position: absolute;
+        left: $meterMargin + $borderSize + $smallBorderSize;
+        top: $gaugeHeight - $smallBorderSize;
+        width: $meterWidth - $borderSize * 2 - $smallBorderSize * 2;
+        height: $meterHeight - $gaugeHeight;
+        display: flex;
+        align-items: inherit;
+
+        button {
+            flex-grow: 1;
+            flex-basis: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin: 8px;
+            background: linear-gradient( to bottom, darkgoldenrod -15%, gold 50%, darkgoldenrod 115% );
+            color: black;
+            border-radius: 4px;
+            vertical-align: middle;
+            font-family: 'Squada One';
+            font-size: 2.5em;
+            border-radius: 4px;
+            svg {
+                margin-right: 8px;
+                font-size: .8em;
+            }
+        }
+
+        button:first-child {
+            flex-grow: 2;
+        }
+
+        button:last-child {
+            flex-grow: 3;
+        }
+
+        button:nth-child(2) {
+            svg {
+                margin: 8px;
+            }
+        }
+
+        button:disabled {
+            background: linear-gradient( to bottom, gray -15%, slategray 50%, gray 115% ); 
+            color: #333;
+        }
+
+        button:focus {
+            border: 2px solid white;
+        }
+
+        button.initialized {
+            background: linear-gradient( to bottom, green -15%, springgreen 50%, green 115% );
+        }
+        /*        button.settings {
+            background: #cacaca;
+        }*/
+
+        button.isMuted {
+            background: linear-gradient( to bottom, firebrick -15%, salmon 50%, firebrick 115% );
+        }
+    }
 }
