@@ -1,5 +1,5 @@
 ﻿import { useEffect, useRef } from "react"
-import { Stage, Layer, Group, Rect, Arc, Text, Circle, Line } from 'react-konva';
+import { Stage, Layer, Group, Rect, Arc, Label, Text, Circle, Line } from 'react-konva';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faPowerOff, faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
 
@@ -19,11 +19,10 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
         // const dataArray = new Uint8Array(bufferLength);
         const sampleBuffer = new Float32Array(analyser.fftSize);
 
-    
+        // https://stackoverflow.com/questions/44360301/web-audio-api-creating-a-peak-meter-with-analysernode
         function loop() {
             var oldVal = shapeRef;
-            //gainNode.gain.value = 0.5 * (1 + Math.sin(Date.now() / 4e2));
-        
+
             analyser.getFloatTimeDomainData(sampleBuffer);
         
             let sumOfSquares = 0;
@@ -32,11 +31,15 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
             }
             const avgPowerDecibels = (10 * Math.log10(sumOfSquares / sampleBuffer.length));
     
-            /*            meterNeedle.style.transform = "rotate(" + Math.max(0 +  (0 + avgPowerDecibels), -60) + "deg)";*/
+
             console.log(avgPowerDecibels)
-            var val = Math.max(0 + (avgPowerDecibels + 90), 0) * 2 + 105
+            var val = Math.max(0 + (avgPowerDecibels + 90), 0) * 1.5 + 105 //Math.max((360 - (avgPowerDecibels * -1)) + 60, 0) + 105;
             console.log(val)
             console.log(shapeRef)
+
+
+
+
             if (shapeRef != null)
                 shapeRef.to({
                         rotation: val
@@ -81,30 +84,71 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
     const buttonAreaShadowGradient = [0, buttonAreaShadowColor, .5, "#00000000", 1, buttonAreaShadowColor];
 
     const meterBackgroundGradient = [0, "darkgoldenrod", .5, "goldenrod", 1, "darkgoldenrod"];
+
+    const arrVals = ["-10", "-20", "-30", "-40", "-50", "-60", "-70"]
     
     return (
         <>
             <div className="vu-meter-v2">
                 <Stage width={window.innerWidth} height={window.innerHeight}>
+                    
                     <Layer>
-                        <Rect
-                            cornerRadius={8}
-                            x={meterMargin}
-                            y={meterMargin}
-                            width={meterWidth}
-                            height={meterHeight}
-                            fill="#111" />
-                        <Rect
-                            x={meterMargin + borderSize}
-                            y={meterMargin + borderSize}
-                            width={meterWidth - borderSize * 2}
-                            height={meterHeight - borderSize * 2}
-                            fillLinearGradientStartPoint={{ x: 0, y: 0}}
-                            fillLinearGradientEndPoint={{ x: meterWidth - borderSize * 2, y: smallBorderSize }}
-                            fillLinearGradientColorStops={meterBackgroundGradient} />
-                    </Layer>
-                    <Layer>
-                        <Group >
+                        <Group>
+                            <Rect
+                                cornerRadius={8}
+                                x={meterMargin}
+                                y={meterMargin}
+                                width={meterWidth}
+                                height={meterHeight}
+                                fill="#111" />
+                            <Rect
+                                x={meterMargin + borderSize}
+                                y={meterMargin + borderSize}
+                                width={meterWidth - borderSize * 2}
+                                height={meterHeight - borderSize * 2}
+                                fillLinearGradientStartPoint={{ x: 0, y: 0 }}
+                                fillLinearGradientEndPoint={{ x: meterWidth - borderSize * 2, y: smallBorderSize }}
+                                fillLinearGradientColorStops={meterBackgroundGradient} />
+
+                            <Text
+                                text="dB (avg)"
+                                x={meterMargin + borderSize + smallBorderSize + glassOutlineRectMargin + 8}
+                                y={meterMargin + borderSize + smallBorderSize + glassOutlineRectMargin + 8}
+                                fontFamily={'Squada One'}
+                                fontSize={32} />
+
+                            <Text
+                                text="DIVIDE BY ZENO"
+                                x={meterWidth - borderSize - smallBorderSize - glassOutlineRectMargin - 72}
+                                y={meterMargin + borderSize + smallBorderSize + glassOutlineRectMargin + 8}
+                                fontFamily={'Squada One'}
+                                fontSize={16} />
+
+                            <Text
+                                text="-Inf"
+                                x={meterMargin + borderSize + smallBorderSize + glassOutlineRectMargin + 8}
+                                y={gaugeHeight - borderSize - smallBorderSize - glassOutlineRectMargin - 32}
+                                fontFamily={'Squada One'}
+                                fontSize={32} />
+
+                            <Text
+                                text="0"
+                                x={meterWidth - borderSize - smallBorderSize - glassOutlineRectMargin - 64}
+                                y={gaugeHeight - borderSize - smallBorderSize - glassOutlineRectMargin - 32}
+                                fontFamily={'Squada One'}
+                                fill={"darkred"}
+                                fontSize={32} /> 
+
+                            {arrVals.map(function (arrVal, i) {
+                                return <Text
+                                    text={arrVal}
+                                    x={meterWidth /2 - meterMargin - borderSize / 2 + Math.cos(i/arrVal.length * Math.PI / 2) * 156}
+                                    y={gaugeHeight - borderSize - smallBorderSize - glassOutlineRectMargin - 32 + Math.sin(i / arrVal.length * Math.PI / -2) * 80 - 32}
+                                    fontFamily={'Squada One'}
+                                    fontSize={32} />
+                            })}
+                        </Group>
+                        <Group>
                             <Rect
                                 cornerRadius={8}
                                 x={meterMargin}
@@ -268,7 +312,7 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
                             angle={-335}
                             rotation={320}
                             fill='yellow'
-                            stroke='red'
+                            stroke='darkred'
                             strokeWidth={4} />
                         
                         <Arc
@@ -290,7 +334,7 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
                             angle={-335}
                             rotation={320}
                             fill='transparent'
-                            stroke='red'
+                            stroke='darkred'
                             dash={[10, 10]}
                             strokeWidth={4} />
                         <Rect
