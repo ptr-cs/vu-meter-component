@@ -7,8 +7,8 @@ function App() {
 const [audioInitialized, setAudioInitialized] = useState(false);
 var [analyser, setAnalyser] = useState(null);
 var [gainNode, setGainNode] = useState(null);
-    var [isMuted, setIsMuted] = useState(null);
-    var [isInitialized, setIsInitialized] = useState(null);
+var [isMuted, setIsMuted] = useState(null);
+var [isInitialized, setIsInitialized] = useState(null);
   
 function init() {
 

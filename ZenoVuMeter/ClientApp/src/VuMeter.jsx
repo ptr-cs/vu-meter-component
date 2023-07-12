@@ -1,14 +1,16 @@
-﻿import { useEffect, useRef } from "react"
+﻿import { useEffect, useRef, useState } from "react"
 import { Stage, Layer, Group, Rect, Arc, Label, Text, Circle, Line } from 'react-konva';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGear, faPowerOff, faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
+import { faGear, faPowerOff, faVolumeHigh, faVolumeXmark, faGaugeSimple } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function VuMeter({ analyser, audioInitialized, gainNode, init, toggleMute, isMuted, isInitialized }) {
     
     const meterNeedle = document.getElementById("vu-meter-needle");
     var shapeRef = useRef(null);
-    
+    var [isSettingsView, setIsSettingsView] = useState(false);
+    var [isAudioLogPaused, setIsAudioLogPaused] = useState(false);
+    var [audioLog, setAudioLog] = useState("");
     
     function visualize() {
 
@@ -24,29 +26,36 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
             var oldVal = shapeRef;
 
             analyser.getFloatTimeDomainData(sampleBuffer);
-        
+
             let sumOfSquares = 0;
             for (let i = 0; i < sampleBuffer.length; i++) {
-              sumOfSquares += sampleBuffer[i] ** 2;
+                sumOfSquares += sampleBuffer[i] ** 2;
             }
             const avgPowerDecibels = (10 * Math.log10(sumOfSquares / sampleBuffer.length));
-    
-
-            console.log(avgPowerDecibels)
-            var val = Math.max(0 + (avgPowerDecibels + 90), 0) * 1.5 + 105 //Math.max((360 - (avgPowerDecibels * -1)) + 60, 0) + 105;
-            console.log(val)
-            console.log(shapeRef)
-
-
-
+            console.log("PAUSED: " + isAudioLogPaused)
+            if (isAudioLogPaused === false) {
+                
+                var currentdate = new Date();
+                var datetime =
+                    + currentdate.getHours() + ":"
+                    + currentdate.getMinutes() + ":"
+                    + currentdate.getSeconds() + "."
+                    + currentdate.getMilliseconds()
+                setAudioLog(audioLog += "\n" + datetime + "\t" + avgPowerDecibels)
+                var textarea = document.getElementById('audioReadout');
+                if (textarea != null)
+                    textarea.scrollTop = textarea.scrollHeight;
+            }
+            
+            var val = Math.max(0 + (avgPowerDecibels + 90), 0) * 1.5 + 105 //Math.max((360 - (avgPowerDecibels * -1)) + 60, 0) + 105; // test
 
             if (shapeRef != null)
                 shapeRef.to({
-                        rotation: val
+                    rotation: val
                 });
             else
                 shapeRef = oldVal
-        
+
             requestAnimationFrame(loop);
           }
           loop();
@@ -55,10 +64,23 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
       useEffect(() => {
         if (audioInitialized === true)
               visualize(); 
-
-          var button = document.getElementById("initButton");
           
       }, [audioInitialized]);
+
+    useEffect(() => {
+        if (isMuted === false)
+            visualize();
+
+    }, [isMuted]);
+
+    const toggleSettingsView = () => {
+        setIsSettingsView(!isSettingsView);
+    }
+
+    const toggleAudioLogPause = () => {
+        console.log(isAudioLogPaused)
+        setIsAudioLogPaused(!isAudioLogPaused);
+    }
 
     const meterWidth = 512;
     const meterHeight = 320;
@@ -92,7 +114,7 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
             <div className="vu-meter-v2">
                 <Stage width={window.innerWidth} height={window.innerHeight}>
                     
-                    <Layer>
+                    <Layer visible={!isSettingsView}>
                         <Group>
                             <Rect
                                 cornerRadius={8}
@@ -141,6 +163,7 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
 
                             {arrVals.map(function (arrVal, i) {
                                 return <Text
+                                    key={i}
                                     text={arrVal}
                                     x={meterWidth /2 - meterMargin - borderSize / 2 + Math.cos(i/arrVal.length * Math.PI / 2) * 156}
                                     y={gaugeHeight - borderSize - smallBorderSize - glassOutlineRectMargin - 32 + Math.sin(i / arrVal.length * Math.PI / -2) * 80 - 32}
@@ -148,6 +171,108 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
                                     fontSize={32} />
                             })}
                         </Group>
+                        {
+                            // lights
+                        }
+                        <Group>
+                            <Circle
+                                x={meterWidth / 3}
+                                y={gaugeHeight - 32}
+                                radius={120}
+                                fillRadialGradientStartPoint={[0, 0]}
+                                fillRadialGradientStartRadius={0}
+                                fillRadialGradientEndPoint={[0, 0]}
+                                fillRadialGradientEndRadius={120}
+                                fillRadialGradientColorStops={[0, '#ffffff88', 0.5, '#ffffff44', 1, 'transparent']} />
+                            <Circle
+                                x={(meterWidth / 3) * 2}
+                                y={gaugeHeight - 32}
+                                radius={120}
+                                fillRadialGradientStartPoint={[0, 0]}
+                                fillRadialGradientStartRadius={0}
+                                fillRadialGradientEndPoint={[0, 0]}
+                                fillRadialGradientEndRadius={120}
+                                fillRadialGradientColorStops={[0, '#ffffff88', 0.5, '#ffffff44', 1, 'transparent']} />
+                        </Group>
+                        
+                        
+                        <Group>
+                            <Arc
+                                x={meterWidth / 2}
+                                y={gaugeHeight}
+                                innerRadius={gaugeHeight / 2}
+                                outerRadius={gaugeHeight / 2}
+                                angle={-210}
+                                rotation={195}
+                                fill='yellow'
+                                stroke='black'
+                                strokeWidth={4} />
+                            <Arc
+                                x={meterWidth / 2}
+                                y={gaugeHeight}
+                                innerRadius={gaugeHeight / 2}
+                                outerRadius={gaugeHeight / 2}
+                                angle={-335}
+                                rotation={320}
+                                fill='yellow'
+                                stroke='darkred'
+                                strokeWidth={4} />
+
+                            <Arc
+                                x={meterWidth / 2}
+                                y={gaugeHeight}
+                                innerRadius={gaugeHeight / 1.8}
+                                outerRadius={gaugeHeight / 1.8}
+                                angle={-232}
+                                rotation={195}
+                                fill='transparent'
+                                stroke='black'
+                                dash={[10, 10]}
+                                strokeWidth={4} />
+                            <Arc
+                                x={meterWidth / 2}
+                                y={gaugeHeight}
+                                innerRadius={gaugeHeight / 1.8}
+                                outerRadius={gaugeHeight / 1.8}
+                                angle={-335}
+                                rotation={320}
+                                fill='transparent'
+                                stroke='darkred'
+                                dash={[10, 10]}
+                                strokeWidth={4} />
+                            <Rect
+                                x={meterWidth / 2}
+                                y={gaugeHeight}
+                                width={2}
+                                height={gaugeHeight - borderSize * 4}
+                                stroke="#111"
+                                strokeWidth={2}
+                                rotation={105}
+                                shadowColor={'black'}
+                                shadowBlur={8}
+                                shadowOffset={[64, 0]}
+                                shadowOpacity={0.5}
+                                ref={(node) => {
+                                    if (node != null)
+                                        shapeRef = node;
+                                }}
+                            />
+                        </Group>
+                    </Layer>
+                    <Layer visible={isSettingsView}>
+                        <Group>
+                            <Rect
+                                x={meterMargin + borderSize}
+                                y={meterMargin + borderSize}
+                                width={meterWidth - borderSize * 2}
+                                height={meterHeight - borderSize * 2}
+                                fill={'#111'} />
+                        </Group>
+                    </Layer>
+                    {
+                        // meter bevel
+                    }
+                    <Layer>
                         <Group>
                             <Rect
                                 cornerRadius={8}
@@ -292,69 +417,6 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
                                 fillLinearGradientEndPoint={{ x: 0, y: 0 }}
                                 fillLinearGradientColorStops={smallBorderShadowGradient} />
                         </Group>
-                    </Layer>
-                    <Layer>
-                        <Arc
-                            x={meterWidth /2}
-                            y={gaugeHeight }
-                            innerRadius={gaugeHeight / 2}
-                            outerRadius={gaugeHeight / 2}
-                            angle={-210}
-                            rotation={195 }
-                            fill='yellow'
-                            stroke='black'
-                            strokeWidth={4} />
-                        <Arc
-                            x={meterWidth / 2}
-                            y={gaugeHeight}
-                            innerRadius={gaugeHeight / 2}
-                            outerRadius={gaugeHeight / 2}
-                            angle={-335}
-                            rotation={320}
-                            fill='yellow'
-                            stroke='darkred'
-                            strokeWidth={4} />
-                        
-                        <Arc
-                            x={meterWidth / 2}
-                            y={gaugeHeight}
-                            innerRadius={gaugeHeight / 1.8}
-                            outerRadius={gaugeHeight / 1.8}
-                            angle={-232}
-                            rotation={195}
-                            fill='transparent'
-                            stroke='black'
-                            dash={[10, 10]}
-                            strokeWidth={4} />
-                        <Arc
-                            x={meterWidth / 2}
-                            y={gaugeHeight}
-                            innerRadius={gaugeHeight / 1.8}
-                            outerRadius={gaugeHeight / 1.8}
-                            angle={-335}
-                            rotation={320}
-                            fill='transparent'
-                            stroke='darkred'
-                            dash={[10, 10]}
-                            strokeWidth={4} />
-                        <Rect
-                            x={meterWidth / 2}
-                            y={gaugeHeight}
-                            width={2}
-                            height={gaugeHeight - borderSize * 4}
-                            stroke="#111"
-                            strokeWidth={2}
-                            rotation={105 }
-                            ref={(node) => {
-                                if (node != null)
-                                    shapeRef = node;
-                            }}
-                        />
-                    </Layer>
-                    {
-                        // meter bevel
-                    }
-                    <Layer>
                         <Group visible={true}>
                             <Rect
 
@@ -394,6 +456,7 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
                                 fillLinearGradientEndPoint={{ x: 0, y: 0 }}
                                 fillLinearGradientColorStops={borderShadowGradient} />
                         </Group>
+                        
                         {
                             // buttons background
                         }
@@ -417,6 +480,7 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
                                 fillLinearGradientColorStops={buttonAreaShadowGradient}
                             />
                         </Group>
+                        
                         {
                             // glass spectral highlight and shadows:
                         }
@@ -542,13 +606,22 @@ export default function VuMeter({ analyser, audioInitialized, gainNode, init, to
                         </Group>
                     </Layer>
                 </Stage>
+                {isSettingsView ? 
+                    <>
+                        <div className="buttons" id="audioLogButtons">
+                            <button onClick={() => toggleAudioLogPause()}>PAUSE</button>
+                            <button>COPY</button>
+                        </div>
+                        <textarea id="audioReadout" readOnly value={audioLog} rows="64"></textarea>
+                    </> : <></>   
+                }
                 <div className="buttons">
                     <button className={`initAudio ${isInitialized ? 'initialized' : ''}`} onClick={() => init()}>
                         <FontAwesomeIcon icon={faPowerOff} />
                         <span>INIT</span>
                     </button>
-                    <button className='settings'>
-                        <FontAwesomeIcon icon={faGear} />
+                    <button className='settings' onClick={() => toggleSettingsView()}>
+                        {!isSettingsView ? <FontAwesomeIcon icon={faGear} /> : <FontAwesomeIcon icon={faGaugeSimple} /> }
                     </button>
                     <button className={`muteAudio ${isMuted ? 'isMuted' : ''}`} onClick={() => toggleMute()} disabled={!isInitialized}>
                         {isMuted ? <FontAwesomeIcon icon={faVolumeXmark} /> : <FontAwesomeIcon icon={faVolumeHigh} />  }

@@ -647,3 +647,23 @@ body {
 .vu-meter-v2 div.buttons button.isMuted {
   background: linear-gradient(to bottom, firebrick -15%, salmon 50%, firebrick 115%);
 }
+.vu-meter-v2 #audioLogButtons {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  width: 464px;
+  height: 64px;
+}
+.vu-meter-v2 #audioLogButtons button {
+  flex-grow: 1;
+}
+.vu-meter-v2 #audioReadout {
+  position: absolute;
+  top: 104px;
+  left: 40px;
+  width: 460px;
+  height: 140px;
+  resize: none;
+  background: transparent;
+  color: springgreen;
+}

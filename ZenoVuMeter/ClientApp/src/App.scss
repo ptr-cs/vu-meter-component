@@ -723,6 +723,7 @@ body {
             font-family: 'Squada One';
             font-size: 2.5em;
             border-radius: 4px;
+
             svg {
                 margin-right: 8px;
                 font-size: .8em;
@@ -744,7 +745,7 @@ body {
         }
 
         button:disabled {
-            background: linear-gradient( to bottom, gray -15%, slategray 50%, gray 115% ); 
+            background: linear-gradient( to bottom, gray -15%, slategray 50%, gray 115% );
             color: #333;
         }
 
@@ -762,5 +763,28 @@ body {
         button.isMuted {
             background: linear-gradient( to bottom, firebrick -15%, salmon 50%, firebrick 115% );
         }
+    }
+
+    #audioLogButtons {
+        position: absolute;
+        left: $meterMargin + $borderSize + $smallBorderSize;
+        top: $borderSize + $meterMargin + $smallBorderSize;
+        width: $meterWidth - $borderSize * 2 - $smallBorderSize * 2;
+        height: $meterHeight - $gaugeHeight;
+
+        button {
+            flex-grow: 1;
+        }
+    }
+
+    #audioReadout {
+        position: absolute;
+        top: $meterMargin + $smallBorderSize + $borderSize + $meterHeight - $gaugeHeight;
+        left: $meterMargin + $smallBorderSize + $borderSize;
+        width: $meterWidth - $borderSize * 2 - $smallBorderSize * 2 - 4;
+        height: $gaugeHeight - $smallBorderSize * 2 - $borderSize * 2 - 4 - ($meterHeight - $gaugeHeight);
+        resize: none;
+        background: transparent;
+        color: springgreen;
     }
 }
